@@ -15,7 +15,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.ClubDTO;
