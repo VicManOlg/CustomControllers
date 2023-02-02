@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXPasswordField?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="gridPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600" minWidth="800" onKeyPressed="#OnKeyPressed" style="-fx-background-color: #373838;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.LoginController">
+   <children>
+      <ImageView fitHeight="${gridPane.height}" fitWidth="${gridPane.width}" opacity="0.2" AnchorPane.bottomAnchor="0.599999999999909" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="11.199999999999818" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../images/Estadio%20futbol.jpg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <HBox alignment="CENTER" fillHeight="false" layoutX="-23.0" layoutY="14.0" AnchorPane.bottomAnchor="-14.0" AnchorPane.leftAnchor="-23.0" AnchorPane.rightAnchor="23.0" AnchorPane.topAnchor="14.0">
+         <children>
+
+
+            <AnchorPane fx:id="gridPane2" prefHeight="${gridPane.height / 2}" prefWidth="${gridPane.width / 4}" style="-fx-background-color: rgba(33,33,33,0.7847514005602241) 0%;">
+               <children>
+                  <Label fx:id="lError" alignment="CENTER" textFill="#ffa100" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="20.0">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <VBox alignment="TOP_CENTER" prefHeight="${gridPane.height / 2}" prefWidth="${gridPane.width / 4}" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label prefWidth="${gridPane2.width / 1.5}" text="Iniciar sesión" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" right="20.0" top="50.0" />
+                           </VBox.margin>
+                        </Label>
+                        <MFXTextField fx:id="tfUser" cache="true" floatMode="BORDER" prefHeight="40.0" prefWidth="${gridPane2.width / 1.5}" promptText="Correo electrónico" style="-fx-background-color: rgba(96,93,93,1) 36%;">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                           <textFill>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.8700000047683716" />
+                           </textFill>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </MFXTextField>
+                        <MFXPasswordField fx:id="tfPass" allowPaste="true" floatMode="BORDER" prefHeight="40.0" prefWidth="${gridPane2.width / 1.5}" promptText="Contraseña" style="-fx-background-color: rgba(96,93,93,1) 36%;">
+                           <VBox.margin>
+                              <Insets left="10.0" right="10.0" />
+                           </VBox.margin>
+                           <textFill>
+                              <Color red="1.0" green="0.9740740656852722" blue="0.9740740656852722" opacity="0.8700000047683716" />
+                           </textFill>
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <effect>
+                           </effect>
+                        </MFXPasswordField>
+                        <MFXButton fx:id="btnLogin" buttonType="RAISED" depthLevel="LEVEL5" onAction="#OnBtnLoginClickListenner" prefHeight="50.0" prefWidth="${gridPane2.width / 1.5}" rippleColor="#792a2a" style="-fx-background-color: rgba(255,0,0,1) 36%;" text="Iniciar sesión" textFill="WHITE">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin></MFXButton>
+                        <Label text="SuscrÍbete Ya." textFill="WHITE">
+                           <graphic>
+                              <Label text="¿Todavía sin cuenta?" textFill="#949494">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+
+         </children></HBox>
+      <Label text="Scout" textFill="WHITE" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="45.0" />
+         </font>
+         <graphic>
+            <Label text="IOT" textFill="#fc0000">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+         </graphic></Label>
+   </children>
+</AnchorPane>

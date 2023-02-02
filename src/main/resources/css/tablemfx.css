@@ -1,0 +1,21 @@
+.mfx-table-row {
+    -fx-text-background-color: white;
+    -fx-text-fill: white;
+  
+}
+.mfx-table-row-cell {
+    -fx-text-background-color: white;
+    -fx-text-fill: white;
+}
+.mfx-table-row-cell .label {
+    -fx-text-background-color: white;
+    -fx-text-fill: white;
+}
+.mfx-table-column {
+    -fx-text-background-color: white;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+.mfx-table-view .default-footer .mfx-icon-wrapper{
+    -fx-background-color: white;
+}

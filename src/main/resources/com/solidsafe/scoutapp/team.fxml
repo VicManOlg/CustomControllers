@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="465.0" prefWidth="622.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.TeamController">
+   <children>
+      <HBox layoutX="113.0" layoutY="244.0" prefHeight="31.0" prefWidth="404.0">
+         <children>
+            <MFXTextField fx:id="tfUrl" floatMode="ABOVE" prefHeight="31.0" prefWidth="413.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: rgba(96,93,93,1) 36%;" textLimit="1000">
+               <textFill>
+                  <Color red="1.0" green="1.0" blue="1.0" opacity="0.8700000047683716" />
+               </textFill></MFXTextField>
+            <MFXButton onAction="#OnSearchUrlClickListenner" prefHeight="31.0" prefWidth="25.0" style="-fx-background-radius: 30px; -fx-background-color: rgba(96,93,93,1) 36%;" text=" ">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/search_magnifyng_glass_find_locate_icon_123485.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </MFXButton>
+         </children>
+      </HBox>
+      <MFXTextField fx:id="tfName" floatMode="ABOVE" layoutX="115.0" layoutY="105.0" prefHeight="31.0" prefWidth="404.0" style="-fx-background-radius: 30px; -fx-background-color: rgba(96,93,93,1) 36%; -fx-border-radius: 30px;">
+         <textFill>
+            <Color red="1.0" green="1.0" blue="1.0" opacity="0.8700000047683716" />
+         </textFill></MFXTextField>
+      <Label layoutX="124.0" layoutY="78.0" prefHeight="26.0" prefWidth="350.0" text="Nombre del equipo:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="125.0" layoutY="220.0" prefHeight="18.0" prefWidth="350.0" text="Url Escudo:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="ivUrl" fitHeight="150.0" fitWidth="200.0" layoutX="125.0" layoutY="295.0" pickOnBounds="true" preserveRatio="true" />
+      <MFXComboBox fx:id="tfCat" floatMode="ABOVE" layoutX="115.0" layoutY="173.0" prefHeight="31.0" prefWidth="404.0" style="-fx-background-radius: 30px; -fx-border-radius: 30px; -fx-background-color: rgba(96,93,93,1) 36%;" AnchorPane.topAnchor="173.0">
+         <textFill>
+            <Color red="1.0" green="1.0" blue="1.0" opacity="0.8700000047683716" />
+         </textFill></MFXComboBox>
+      <Label layoutX="124.0" layoutY="147.0" prefHeight="18.0" prefWidth="350.0" text="Categoria:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <MFXButton fx:id="btnAdd" layoutX="410.0" layoutY="303.0" onAction="#OnBtnAddClickListenner" prefHeight="46.0" prefWidth="108.0" style="-fx-background-color: rgba(96,93,93,1) 36%; -fx-background-radius: 30px;" text="Añadir" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </MFXButton>
+   </children>
+</AnchorPane>
