@@ -17,7 +17,7 @@ public class CustomRadarChartControl extends AnchorPane
 {
     
     RadarchartController controller;
-    ObjectProperty<Paint> arrowColor = new SimpleObjectProperty<>(Color.YELLOW);
+    ObjectProperty<Paint> radarColor = new SimpleObjectProperty<>(Color.YELLOW);
     
     public CustomRadarChartControl()
     {
@@ -33,7 +33,8 @@ public class CustomRadarChartControl extends AnchorPane
             Node n = loader.load();
             
             this.getChildren().add(n);
-
+            controller.getTriangle1().strokeProperty().bind(radarColor);
+            controller.getTriangle2().strokeProperty().bind(radarColor);    
         }
         catch(IOException ix)
         {
@@ -47,12 +48,12 @@ public class CustomRadarChartControl extends AnchorPane
 
 
 
-    public ObjectProperty<Paint> getArrowColor() {
-        return arrowColor;
+    public ObjectProperty<Paint> getRadarColor() {
+        return radarColor;
     }
 
-    public void setArrowColor(ObjectProperty<Paint> arrowColor) {
-        this.arrowColor = arrowColor;
+    public void setRadarColor(ObjectProperty<Paint> radarColor) {
+        this.radarColor = radarColor;
     }
     
 }

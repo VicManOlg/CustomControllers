@@ -3,10 +3,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Polyline?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="311.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hellofx.RadarchartController">
    <children>
-      <Polyline fill="#80ff0000" layoutX="148.0" layoutY="149.0" points="118.79995727539062, 1.0000152587890625, 75.60000610351562, 111.0, -58.800025939941406, 111.0, -100.4000015258789, 1.0000152587890625" strokeType="INSIDE" />
-      <Polyline fill="#98ad8200" layoutX="144.0" layoutY="83.0" points="80.00003051757812, 177.0, 122.79995727539062, 66.00001525878906, 10.400054931640625, -31.800006866455078, -96.4000015258789, 67.00001525878906" strokeType="INSIDE" />
+      <Polyline fx:id="triangle2" fill="#81bf3f00" layoutX="148.0" layoutY="149.0" points="118.79995727539062, 1.0000152587890625, 75.60000610351562, 111.0, -58.800025939941406, 111.0, -100.4000015258789, 1.0000152587890625" strokeType="INSIDE" />
+      <Polyline fx:id="triangle1" fill="#98ad8200" layoutX="144.0" layoutY="83.0" points="80.00003051757812, 177.0, 122.79998779296875, 67.00001525878906, 10.400054931640625, -31.800006866455078, -96.4000015258789, 67.00001525878906" strokeType="INSIDE" />
    </children>
 </Pane>
