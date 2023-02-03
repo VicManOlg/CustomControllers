@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.solidsafe.scoutapp;
 
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -20,7 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.CategoryDTO;
 import model.Repository;
-import model.ScoutDTO;
 import model.TeamDTO;
 
 /**
