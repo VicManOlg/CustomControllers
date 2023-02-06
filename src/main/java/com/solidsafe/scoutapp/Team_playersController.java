@@ -96,7 +96,7 @@ public class Team_playersController implements Initializable {
                             {
                                 
                             }
-
+                            
                             @Override
                             public void updateItem(Void item, boolean empty) {
                                 super.updateItem(item, empty);
@@ -119,6 +119,10 @@ public class Team_playersController implements Initializable {
 
     @FXML
     private void OnAddClickListenner(ActionEvent event) {
+        for(PlayerTV2 p : playerstv){
+            
+        }
+        
     }
     
 }
