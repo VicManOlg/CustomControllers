@@ -68,8 +68,7 @@ public class Team_playersController implements Initializable {
         rowName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         rowId.setCellValueFactory(new PropertyValueFactory<>("Id"));
         rowYear.setCellValueFactory(new PropertyValueFactory<>("Año"));
-        rowNacionality.setCellValueFactory(new PropertyValueFactory<>("Nacionalidad"));
-            
+        rowNacionality.setCellValueFactory(new PropertyValueFactory<>("Nacionalidad")); 
         playerstv = FXCollections.observableArrayList();
         ArrayList<PlayerDTO> players = Repository.GetPlayers(1);
         for (PlayerDTO player : players){
@@ -92,13 +91,30 @@ public class Team_playersController implements Initializable {
                 new Callback<TableColumn<PlayerTV2, Void>, TableCell<PlayerTV2, Void>>() {
                     public TableCell<PlayerTV2, Void> call(final TableColumn<PlayerTV2, Void> param) {
                         final TableCell<PlayerTV2, Void> cell = new TableCell<PlayerTV2, Void>() {
-                            private final CheckBox btn = new CheckBox("");
-                            {
-                                
+                            private final Button btn = new Button("");
+                            {    
+                                Image image = new Image(getClass().getResource("/images/new.png").toExternalForm());
+                                ImageView iv = new ImageView(image);
+                                iv.setFitHeight(40.0);
+                                iv.setFitWidth(40.0);
+                                btn.setGraphic(iv);
+                                btn.setStyle("-fx-background-color: rgba(245, 39, 145, 0)");
+                                btn.setTooltip(
+                                        new Tooltip("Editar")
+                                );
+                                btn.setOnAction((ActionEvent event) -> {
+                                    try {
+                                        PlayerTV2 dat = getTableView().getItems().get(getIndex());
+                                        if(Messages.displayQuestion("Confirmacion", "Quieres añadir el jugador  "+dat.getNombre()+" al equipo?")){
+                                    
+                                        }            
+                                    } catch (Exception ex) {
+                                        ex.printStackTrace();
+                                    }
+                                });
                             }
-                            
                             @Override
-                            public void updateItem(Void item, boolean empty) {
+                            public void updateItem(Void item, boolean empty) {   
                                 super.updateItem(item, empty);
                                 if (empty) {
                                     setGraphic(null);
@@ -110,11 +126,8 @@ public class Team_playersController implements Initializable {
                         return cell;
                     }
                 };
-
         colBtn.setCellFactory(cellFactory);
-
         tbPlayer.getColumns().add(colBtn);
-
     }
 
     @FXML

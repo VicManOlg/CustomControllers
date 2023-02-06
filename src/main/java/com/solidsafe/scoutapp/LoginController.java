@@ -77,7 +77,6 @@ public class LoginController implements Initializable {
         }
         
     }
-
     @FXML
     private void OnKeyPressed(KeyEvent event) throws IOException {
         if(event.getCode().toString().equals("ENTER")){

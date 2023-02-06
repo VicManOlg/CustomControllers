@@ -85,23 +85,27 @@ public class PlayersController implements Initializable {
     private void setupTable() {
         //pendiente posicion del jugador
             MFXTableColumn<PlayerDTO> columnId = new MFXTableColumn<>("ID", true, Comparator.comparing(PlayerDTO::getPlayerID));
-            MFXTableColumn<PlayerDTO> columnName = new MFXTableColumn<>("Jugador", true, Comparator.comparing(PlayerDTO::getPlayerName));
+            MFXTableColumn<PlayerDTO> columnName = new MFXTableColumn<>("Nombre", true, Comparator.comparing(PlayerDTO::getPlayerName));
+            MFXTableColumn<PlayerDTO> columnSurName = new MFXTableColumn<>("Apellidos", true, Comparator.comparing(PlayerDTO::getPlayerSurname));
             MFXTableColumn<PlayerDTO> columnBirth = new MFXTableColumn<>("Nacimiento", true, Comparator.comparing(PlayerDTO::getPlayerBirth));
             MFXTableColumn<PlayerDTO> columnNacionality = new MFXTableColumn<>("Nacionalidad", true, Comparator.comparing(PlayerDTO::getNacionality));
             MFXTableColumn<PlayerDTO> columnPrice = new MFXTableColumn<>("Precio", true, Comparator.comparing(PlayerDTO::getPrice));
             MFXTableColumn<PlayerDTO> columnHeigth = new MFXTableColumn<>("Altura", true, Comparator.comparing(PlayerDTO::getHeigth));
+            MFXTableColumn<PlayerDTO> columnWeight = new MFXTableColumn<>("Peso", true, Comparator.comparing(PlayerDTO::getWeight));
 
             columnId.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerID));
             columnName.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerName));
+            columnSurName.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerSurname));
             columnBirth.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerBirth));
             columnNacionality.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getNacionality));
             columnPrice.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPrice));
             columnHeigth.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getHeigth));
+            columnWeight.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getWeight));
 
-            tbPlayers.getTableColumns().addAll(columnId, columnName, columnBirth, columnNacionality, columnPrice, columnHeigth);
+            tbPlayers.getTableColumns().addAll(columnId, columnName, columnSurName, columnBirth, columnNacionality, columnPrice, columnHeigth, columnWeight);
 
             tbPlayers.getFilters().addAll(
-                            new StringFilter<>("Jugador", PlayerDTO::getPlayerName),
+                            new StringFilter<>("Nombre", PlayerDTO::getPlayerName),
                             new IntegerFilter<>("ID", PlayerDTO::getPlayerID),
                             new DoubleFilter<>("Precio", PlayerDTO::getPrice)
             );

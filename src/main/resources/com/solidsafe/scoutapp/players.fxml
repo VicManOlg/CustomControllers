@@ -108,7 +108,7 @@
             <Font name="Courier New" size="12.0" />
          </font>
       </Label>
-      <MFXTableView fx:id="tbPlayers" layoutX="204.0" layoutY="75.0" prefHeight="394.0" prefWidth="622.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 100.0% 100.0%, #434242 0.0%, #818181 100.0%); -fx-background-radius: 30px; -fx-border-radius: 30px;">
+      <MFXTableView fx:id="tbPlayers" layoutX="204.0" layoutY="75.0" prefHeight="394.0" prefWidth="890.0" style="-fx-background-color: linear-gradient(from 0.0% 100.0% to 100.0% 100.0%, #434242 0.0%, #818181 100.0%); -fx-background-radius: 30px; -fx-border-radius: 30px;">
          <stylesheets>
             <URL value="@../../../css/tablemfx.css" />
             <URL value="@../../../css/table.css" />
