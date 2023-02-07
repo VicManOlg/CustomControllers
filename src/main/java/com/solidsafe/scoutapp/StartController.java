@@ -96,6 +96,9 @@ public class StartController implements Initializable {
     ObservableList<CategoryDTO> catdto;
     private ScoutDTO scoutDTO;
     private ClubDTO clubDTO;
+    @FXML
+    private MFXButton btnSquad;
+    private int idTeam;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -108,6 +111,7 @@ public class StartController implements Initializable {
         btnEdit.setVisible(false);
         tablePlayers.setVisible(false);
         btnDelete.setVisible(false);
+        btnSquad.setVisible(false);
         lvTeams.setStyle("-fx-background-color: rgba(245, 39, 145, 0)");
         rowName.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         rowPos.setCellValueFactory(new PropertyValueFactory<>("Posicion"));
@@ -159,7 +163,9 @@ public class StartController implements Initializable {
                         btnEdit.setVisible(true);
                         btnDelete.setVisible(true);
                         tablePlayers.setVisible(true);
+                        btnSquad.setVisible(true);
                         ArrayList<PlayerDTO> players = Repository.GetPlayersByTeam(t.getTeamID());
+                        idTeam = t.getTeamID();
                         for(PlayerDTO p : players){
                             PlayerTV ptv = new PlayerTV();
                             ptv.setId(p.getPlayerID());
@@ -400,6 +406,23 @@ public class StartController implements Initializable {
         Parent root = loader.load();
         PlayersController playersController = loader.getController();
         playersController.callPlayer(clubDTO, scoutDTO);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        //stage.setMaximized(false);   
+        stage.setWidth(1150);
+        stage.setHeight(779);
+        stage.show();
+        //stage.setMaximized(true);
+    }
+
+    @FXML
+    private void OnBtnSquadClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("team_players.fxml"));
+        Parent root = loader.load();
+        Team_playersController tpController = loader.getController();
+        tpController.getTeam(idTeam, clubDTO);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         //stage.setMaximized(false);    

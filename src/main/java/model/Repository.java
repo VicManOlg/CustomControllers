@@ -129,7 +129,16 @@ public class Repository {
                     player.setPlayerID(Integer.parseInt(countryData.get("PlayerId").toString()));
                     player.setPlayerName(countryData.get("PlayerName").toString());
                     player.setPlayerSurname(countryData.get("PlayerSurname").toString());
-                    player.setPlayerBirth(countryData.get("PlayerSurname").toString());
+                    player.setPlayerBirth(countryData.get("BirthDate").toString());
+                    player.setNacionality(countryData.get("Nacionality").toString());
+                    player.setHeigth(Double.parseDouble(countryData.get("Heigth").toString()));
+                    player.setWeight(Double.parseDouble(countryData.get("Weight").toString()));
+                    player.setPrice(Double.parseDouble(countryData.get("Price").toString()));
+                    player.setContract(countryData.get("Contract").toString());
+                    player.setAgent(countryData.get("Agent").toString());
+                    player.setContactAgent(countryData.get("ContactAgent").toString());
+                    player.setContact(countryData.get("Contact").toString());
+                    player.setContactFamily(countryData.get("ContactFamily").toString());
                     players.add(player);
                     System.out.println(player);
                 }   
