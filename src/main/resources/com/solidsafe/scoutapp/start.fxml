@@ -39,10 +39,7 @@
                   <Image url="@../../../images/Girona_FC_new_logo.png" />
                </image>
             </ImageView>
-            <AnchorPane prefHeight="47.0" prefWidth="158.0" style="-fx-border-radius: 50px;">
-               <children>
-                  <ComboBox fx:id="cbCat" layoutX="6.0" layoutY="14.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.4542191876750701) 79%;" stylesheets="@../../../css/combobox.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0" />
-               </children></AnchorPane>
+            <AnchorPane prefHeight="47.0" prefWidth="158.0" style="-fx-border-radius: 50px;" />
             <Button mnemonicParsing="false" opacity="0.9" prefHeight="36.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Inicio      " textFill="#716b6b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
@@ -203,6 +200,7 @@
                   </MFXButton>
                </children>
             </HBox>
+            <ComboBox fx:id="cbCat" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: rgba(0,0,0,0.4542191876750701) 79%;" stylesheets="@../../../css/combobox.css" />
             <ListView fx:id="lvTeams" prefHeight="526.0" prefWidth="196.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%; -fx-background-radius: 30px;" stylesheets="@../../../css/list.css" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="1.0" />
