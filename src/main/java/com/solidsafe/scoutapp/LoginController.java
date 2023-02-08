@@ -67,7 +67,7 @@ public class LoginController implements Initializable {
                 //stage.setMaximized(false);      
                 stage.show();
                 //stage.setMaximized(true);
-                stage.setWidth(1150);
+                stage.setWidth(1300);
                 stage.setHeight(779);
                 //stage.setFullScreen(false);
         }
@@ -93,7 +93,7 @@ public class LoginController implements Initializable {
                 //stage.setMaximized(false);      
                 stage.show();
                 //stage.setMaximized(true);
-                stage.setWidth(1150);
+                stage.setWidth(1300);
                 stage.setHeight(779);
                 //stage.setFullScreen(false);
         }

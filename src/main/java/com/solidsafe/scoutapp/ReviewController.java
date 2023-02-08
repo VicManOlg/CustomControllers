@@ -222,7 +222,7 @@ public class ReviewController implements Initializable {
         //stage.setMaximized(false);    
         stage.setScene(scene);
         //stage.setMaximized(false);   
-        stage.setWidth(1150);
+        stage.setWidth(1300);
         stage.setHeight(781);
         stage.show();
         //stage.setMaximized(true);
@@ -239,7 +239,7 @@ public class ReviewController implements Initializable {
         //stage.setMaximized(false);    
         stage.setScene(scene);
         //stage.setMaximized(false);   
-        stage.setWidth(1150);
+        stage.setWidth(1300);
         stage.setHeight(781);
         stage.show();
         //stage.setMaximized(true);

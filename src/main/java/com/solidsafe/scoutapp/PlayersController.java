@@ -23,8 +23,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -34,7 +32,6 @@ import javafx.stage.Stage;
 import model.ClubDTO;
 import model.PlayerDTO;
 import model.Repository;
-import model.ReviewDTO;
 import model.ScoutDTO;
 
 
@@ -73,6 +70,7 @@ public class PlayersController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         
     } 
+    
     public void callPlayer(ClubDTO club, ScoutDTO scout) {
         lbName.setText(scout.getScoutName() + " " + scout.getScoutSurname());
         scoutDTO = scout;
@@ -82,6 +80,7 @@ public class PlayersController implements Initializable {
         lbClub.setText(club.getClubName());
         setupTable();
     } 
+    
     private void setupTable() {
         //pendiente posicion del jugador
             MFXTableColumn<PlayerDTO> columnId = new MFXTableColumn<>("ID", true, Comparator.comparing(PlayerDTO::getPlayerID));
@@ -176,7 +175,7 @@ public class PlayersController implements Initializable {
         //stage.setMaximized(false);    
         stage.setScene(scene);
         //stage.setMaximized(false);   
-        stage.setWidth(1150);
+        stage.setWidth(1300);
         stage.setHeight(780);
         stage.show();
         //stage.setMaximized(true);
@@ -193,7 +192,7 @@ public class PlayersController implements Initializable {
         //stage.setMaximized(false);    
         stage.setScene(scene);
         //stage.setMaximized(false);   
-        stage.setWidth(1150);
+        stage.setWidth(1300);
         stage.setHeight(780);
         stage.show();
     }

@@ -601,4 +601,66 @@ public class Repository {
         }
         return players;
     }
+    public boolean addTeamSquad(PlayerDTO player, int teamId) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"PlayerID\":"+player.getPlayerID()+",")
+                .append("\"TeamID\":\""+teamId+"\",")
+                .append("\"DateStart\":\""+player.getPlayerSurname()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url("http://localhost:44364/api/post/squad")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
+    public boolean updateTeam(TeamDTO teamdto, int clubID) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"TeamID\":"+teamdto.getTeamID()+",")
+                .append("\"TeamName\":\""+teamdto.getTeamName()+"\",")
+                .append("\"CategoryID\":\""+teamdto.getCatID()+"\",")
+                .append("\"ClubID\":\""+clubID+"\",")
+                .append("\"Picture\":\""+teamdto.getPicture()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url("http://localhost:44364/api/put/team")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .put(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
 }

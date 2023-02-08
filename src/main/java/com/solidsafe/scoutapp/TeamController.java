@@ -36,6 +36,8 @@ public class TeamController implements Initializable {
     ObservableList<CategoryDTO> catdto;
     @FXML
     private MFXButton btnAdd;
+    private int idTeam;
+    private int idClub;
     /**
      * Initializes the controller class.
      */
@@ -60,18 +62,28 @@ public class TeamController implements Initializable {
 
     @FXML
     private void OnBtnAddClickListenner(ActionEvent event) throws IOException {
-        TeamDTO t = new TeamDTO(0, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
-        Repository r = new Repository();
-        r.sendPOST(t, 1);
+        if(btnAdd.getText().equals("Modificar")){
+            TeamDTO t = new TeamDTO(idTeam, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
+            Repository r = new Repository();
+            r.updateTeam(t, idClub);
+        }
+        else{
+            TeamDTO t = new TeamDTO(0, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
+            Repository r = new Repository();
+            r.sendPOST(t, 1);
+        }
+        
     }
     
-    public void UpdateTeam( TeamDTO tdto){
+    public void UpdateTeam(TeamDTO tdto, int club){
         tfName.setText(tdto.getTeamName());
         tfUrl.setText(tdto.getPicture());
         tfCat.selectIndex(tdto.getCatID() - 1);
         Image image = new Image(tfUrl.getText());
         btnAdd.setText("Modificar");
         ivUrl.setImage(image); 
+        idTeam = tdto.getTeamID();
+        idClub = club;
 
 
     }

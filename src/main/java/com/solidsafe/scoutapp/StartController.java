@@ -99,6 +99,8 @@ public class StartController implements Initializable {
     @FXML
     private MFXButton btnSquad;
     private int idTeam;
+    @FXML
+    private Label lbIdTeam1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -154,7 +156,8 @@ public class StartController implements Initializable {
                     btn.setOnAction((ActionEvent event) -> {
                         playerstv.clear();
                         lbTeamName.setText(t.getTeamName());
-                        lbIdTeam.setText("Identificador: " + t.getTeamID());
+                        lbIdTeam1.setText(t.getTeamID()+"");
+                        lbIdTeam.setText("Identificador: ");
                         Image image1 = new Image(t.getPicture());
                         if(image1.getWidth() < 10){
                             image1 =  new Image("https://images.emojiterra.com/twitter/v13.1/512px/2753.png");
@@ -327,7 +330,8 @@ public class StartController implements Initializable {
                     btn.setOnAction((ActionEvent event1) -> {
                         playerstv.clear();
                         lbTeamName.setText(t.getTeamName());
-                        lbIdTeam.setText("Identificador: " + t.getTeamID());
+                        lbIdTeam1.setText(t.getTeamID()+"");
+                        lbIdTeam.setText("Identificador: ");
                         Image image1 = new Image(t.getPicture());
                         if(image1.getWidth() < 10){
                             image1 =  new Image("https://images.emojiterra.com/twitter/v13.1/512px/2753.png");
@@ -336,7 +340,9 @@ public class StartController implements Initializable {
                         btnEdit.setVisible(true);
                         btnDelete.setVisible(true);
                         tablePlayers.setVisible(true);
+                        btnSquad.setVisible(true);
                         ArrayList<PlayerDTO> players = Repository.GetPlayersByTeam(t.getTeamID());
+                        idTeam = t.getTeamID();
                         for(PlayerDTO p : players){
                             PlayerTV ptv = new PlayerTV();
                             ptv.setId(p.getPlayerID());
@@ -373,8 +379,8 @@ public class StartController implements Initializable {
         Stage stage = new Stage();
         Parent root = loader.load();
         TeamController tc = loader.getController();
-        TeamDTO t = new TeamDTO(lbIdTeam.getText().charAt(lbIdTeam.getText().length() -1), lbTeamName.getText(), 1, ivLogo.getImage().getUrl());
-        tc.UpdateTeam(t);
+        TeamDTO t = new TeamDTO(Integer.parseInt(lbIdTeam1.getText()), lbTeamName.getText(), 1, ivLogo.getImage().getUrl());
+        tc.UpdateTeam(t, clubDTO.getClubId());
         stage.setScene(new Scene(root));
         stage.setTitle("Modificar Equipo");
         stage.initModality(Modality.WINDOW_MODAL);
@@ -394,7 +400,7 @@ public class StartController implements Initializable {
         //stage.setMaximized(false);    
         stage.setScene(scene);
         //stage.setMaximized(false);   
-        stage.setWidth(1150);
+        stage.setWidth(1300);
         stage.setHeight(779);
         stage.show();
         //stage.setMaximized(true);
@@ -411,7 +417,7 @@ public class StartController implements Initializable {
         //stage.setMaximized(false);    
         stage.setScene(scene);
         //stage.setMaximized(false);   
-        stage.setWidth(1150);
+        stage.setWidth(1300);
         stage.setHeight(779);
         stage.show();
         //stage.setMaximized(true);
@@ -432,6 +438,70 @@ public class StartController implements Initializable {
         stage.setHeight(779);
         stage.show();
         //stage.setMaximized(true);
+    }
+
+    @FXML
+    private void OnSelectionChanged(ActionEvent event) {
+        btsntv.clear();
+        ArrayList<TeamDTO> teams = Repository.GetTeamsByCategoryName(1,tfSearch.getText(),cbCat.getSelectionModel().getSelectedItem().getCatName());
+        for(TeamDTO t : teams){
+            Image image = new Image(t.getPicture());
+            if(image.getWidth() < 10){
+                image =  new Image("https://images.emojiterra.com/twitter/v13.1/512px/2753.png");
+            }
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(80);
+            imageView.setFitHeight(60);
+            TeamTV teamtv = new TeamTV();
+            teamtv.setId(t.getTeamID());
+            teamtv.setName(t.getTeamName());
+            teamtv.setImg(imageView);
+            
+            Button btn = new Button(t.getTeamName());
+                {
+                    ImageView iv = new ImageView(image);
+                    //Label lb1 = new Label("     "+t.getTeamName());
+                    //lb1.setStyle("-fx-text-background-color: white;");
+                    iv.setFitHeight(80.0);
+                    iv.setFitWidth(65.0);
+                    //lb1.setGraphic(iv);
+                    //btn.setGraphic(lb1);
+                    btn.setGraphic(iv);
+                    btn.setStyle("-fx-background-color: rgba(245, 39, 145, 0); -fx-text-fill: white;");
+                    btn.setTooltip(
+                            new Tooltip(t.getTeamName())
+                    );
+                    btn.setOnAction((ActionEvent event1) -> {
+                        playerstv.clear();
+                        lbTeamName.setText(t.getTeamName());
+                        lbIdTeam1.setText(t.getTeamID()+"");
+                        lbIdTeam.setText("Identificador: ");
+                        Image image1 = new Image(t.getPicture());
+                        if(image1.getWidth() < 10){
+                            image1 =  new Image("https://images.emojiterra.com/twitter/v13.1/512px/2753.png");
+                        }
+                        ivLogo.setImage(image1);
+                        btnEdit.setVisible(true);
+                        btnDelete.setVisible(true);
+                        btnSquad.setVisible(true);
+                        tablePlayers.setVisible(true);
+                        idTeam = t.getTeamID();
+                        ArrayList<PlayerDTO> players = Repository.GetPlayersByTeam(t.getTeamID());
+                        for(PlayerDTO p : players){
+                            PlayerTV ptv = new PlayerTV();
+                            ptv.setId(p.getPlayerID());
+                            ptv.setNombre(p.getPlayerName() + " " + p.getPlayerSurname() );
+                            ptv.setEdad(12);
+                            ptv.setPosicion("ld");
+                            playerstv.add(ptv);
+                        }
+                        tablePlayers.setItems(playerstv);
+                              
+                    });
+                }
+            btsntv.add(btn);                           
+        }
+        lvTeams.setItems(btsntv);     
     }
                 
     

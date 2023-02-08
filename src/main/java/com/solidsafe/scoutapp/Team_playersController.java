@@ -151,6 +151,10 @@ public class Team_playersController implements Initializable {
                                         if(Messages.displayQuestion("Confirmacion", "Quieres añadir el jugador  "+dat.getNombre()+" al equipo?")){
                                             
                                             teamPlayersTV.add(dat);
+                                            
+                                            PlayerDTO p = Repository.GetPlayer(dat.getId());
+                                            Repository repository = new Repository();
+                                            repository.addTeamSquad(p, idTeam);
                                             playerstv.remove(dat);
                                         }            
                                     } catch (Exception ex) {
