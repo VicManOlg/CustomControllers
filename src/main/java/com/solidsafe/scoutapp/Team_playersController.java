@@ -88,12 +88,14 @@ public class Team_playersController implements Initializable {
         playerstv = FXCollections.observableArrayList();
         ArrayList<PlayerDTO> players = Repository.GetPlayers(club.getClubId());
         for (PlayerDTO player : players){
-            PlayerTV2 ptv = new PlayerTV2();
-            ptv.setId(player.getPlayerID());
-            ptv.setAño(player.getPlayerBirth());
-            ptv.setNacionalidad(player.getNacionality());
-            ptv.setNombre(player.getPlayerName() + " " + player.getPlayerSurname());
-            playerstv.add(ptv);
+                if(!player.equals(Repository.GetPlayersByTeam(this.idTeam))){
+                    PlayerTV2 ptv = new PlayerTV2();
+                    ptv.setId(player.getPlayerID());
+                    ptv.setAño(player.getPlayerBirth());
+                    ptv.setNacionalidad(player.getNacionality());
+                    ptv.setNombre(player.getPlayerName() + " " + player.getPlayerSurname());
+                    playerstv.add(ptv);
+                }
         }
         tbPlayer.setItems(playerstv);
         addButtonUpdateToTable();
@@ -110,6 +112,7 @@ public class Team_playersController implements Initializable {
         ArrayList<PlayerDTO> players =  Repository.GetPlayersByTeam(this.idTeam);
         
         for (PlayerDTO player : players){
+            
             PlayerTV2 ptv = new PlayerTV2();
             ptv.setId(player.getPlayerID());
             ptv.setAño(player.getPlayerBirth());

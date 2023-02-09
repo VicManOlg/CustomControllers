@@ -113,14 +113,14 @@
       <TableView fx:id="tablePos" layoutX="530.0" layoutY="72.0" prefHeight="451.0" prefWidth="250.0">
         <columns>
           <TableColumn fx:id="rowLeter" prefWidth="75.0" text="Siglas" />
-          <TableColumn fx:id="rowPos" prefWidth="75.0" text="Nombre" />
+          <TableColumn fx:id="rowPos" prefWidth="105.5999755859375" text="Nombre" />
         </columns>
       </TableView>
       <TableView fx:id="tvTeams" layoutX="821.0" layoutY="71.0" prefHeight="451.0" prefWidth="250.0">
          <columns>
             <TableColumn fx:id="rowLogo" prefWidth="75.0" text="Logo" />
             <TableColumn fx:id="rowId" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="rowName" prefWidth="75.0" text="Nombre" />
+            <TableColumn fx:id="rowName" prefWidth="95.99981689453125" text="Nombre" />
          </columns>
       </TableView>
       <Label layoutX="531.0" layoutY="35.0" prefHeight="26.0" prefWidth="123.0" text="Posiciones:" textFill="WHITE">

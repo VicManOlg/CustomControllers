@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Victor
@@ -158,6 +160,23 @@ public class PlayerDTO {
     public String toString() {
         return "PlayerDTO{" + "playerID=" + playerID + ", playerName=" + playerName + ", playerSurname=" + playerSurname + ", playerBirth=" + playerBirth + ", nacionality=" + nacionality + ", heigth=" + heigth + ", weight=" + weight + ", price=" + price + ", contract=" + contract + ", contact=" + contact + ", agent=" + agent + ", contactAgent=" + contactAgent + ", contactFamily=" + contactFamily + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    public boolean equals(ArrayList<PlayerDTO> players) {
+        for(PlayerDTO pDTO : players){
+            if(this.playerID == pDTO.getPlayerID()){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
     
     
     
