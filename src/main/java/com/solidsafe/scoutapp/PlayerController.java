@@ -156,6 +156,7 @@ public class PlayerController implements Initializable {
         ArrayList<TeamDTO> teams = Repository.GetPlayerTeams(p.getPlayerID());
         for(TeamDTO t : teams){
             TeamTV teamTV = new TeamTV();
+
             teamTV.setId(t.getTeamID());
             teamTV.setName(t.getTeamName());
             Image image = new Image(t.getPicture());
