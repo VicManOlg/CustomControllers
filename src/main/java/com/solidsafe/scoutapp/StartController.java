@@ -215,8 +215,11 @@ public class StartController implements Initializable {
                                         new Tooltip("Eliminar")
                                 );
                                 btn.setOnAction((ActionEvent event) -> {
+                                    PlayerTV dat = getTableView().getItems().get(getIndex());
+                                    Repository res = new Repository();
                                     
-
+                                    
+                                    playerstv.remove(dat); 
                                 });
                             }
 

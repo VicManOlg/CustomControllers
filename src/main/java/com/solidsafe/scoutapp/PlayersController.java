@@ -91,7 +91,7 @@ public class PlayersController implements Initializable {
             MFXTableColumn<PlayerDTO> columnPrice = new MFXTableColumn<>("Precio", true, Comparator.comparing(PlayerDTO::getPrice));
             MFXTableColumn<PlayerDTO> columnHeigth = new MFXTableColumn<>("Altura", true, Comparator.comparing(PlayerDTO::getHeigth));
             MFXTableColumn<PlayerDTO> columnWeight = new MFXTableColumn<>("Peso", true, Comparator.comparing(PlayerDTO::getWeight));
-
+            
             columnId.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerID));
             columnName.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerName));
             columnSurName.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPlayerSurname));
@@ -102,7 +102,7 @@ public class PlayersController implements Initializable {
             columnWeight.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getWeight));
 
             tbPlayers.getTableColumns().addAll(columnId, columnName, columnSurName, columnBirth, columnNacionality, columnPrice, columnHeigth, columnWeight);
-
+            
             tbPlayers.getFilters().addAll(
                             new StringFilter<>("Nombre", PlayerDTO::getPlayerName),
                             new IntegerFilter<>("ID", PlayerDTO::getPlayerID),

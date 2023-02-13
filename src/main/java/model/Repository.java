@@ -663,4 +663,31 @@ public class Repository {
             return true;
         }
     }
+    public static boolean RemovePlayerFromTeam(int idTeam, int idPlayer) {  
+        try {
+            URL url = new URL("http://localhost:44364/api/delete/teamsquad/" + idTeam + "/" + idPlayer);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("DELETE");
+            conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
+            conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
+            } else {
+                StringBuilder informationString = new StringBuilder();
+                Scanner scanner = new Scanner(url.openStream(), "utf-8");
+                while (scanner.hasNext()) {
+                    informationString.append(scanner.nextLine());
+                }
+                scanner.close();
+                System.out.println(String.valueOf(informationString));               
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+            return true;
+        }
+  
 }

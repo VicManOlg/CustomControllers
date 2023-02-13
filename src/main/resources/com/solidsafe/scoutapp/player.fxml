@@ -118,9 +118,9 @@
       </TableView>
       <TableView fx:id="tvTeams" layoutX="821.0" layoutY="71.0" prefHeight="451.0" prefWidth="250.0">
          <columns>
-            <TableColumn fx:id="rowLogo" prefWidth="75.0" text="Logo" />
-            <TableColumn fx:id="rowId" prefWidth="75.0" text="Id" />
-            <TableColumn fx:id="rowName" prefWidth="95.99981689453125" text="Nombre" />
+            <TableColumn fx:id="rowLogo" prefWidth="54.4000244140625" text="Logo" />
+            <TableColumn fx:id="rowId" prefWidth="36.0" text="Id" />
+            <TableColumn fx:id="rowName" prefWidth="156.0" text="Nombre" />
          </columns>
       </TableView>
       <Label layoutX="531.0" layoutY="35.0" prefHeight="26.0" prefWidth="123.0" text="Posiciones:" textFill="WHITE">
