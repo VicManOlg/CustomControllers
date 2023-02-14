@@ -9,13 +9,9 @@ import java.io.IOException;
  */
 public class Test {
     public static void main(String[] args) throws IOException {
-        Repository.login("afer", "123");
-        Repository.GetTeamsByCategory(1, "Pimer");
-        Repository.GetClub(1);
-        Repository.GetScoutReviews(2);
-        Repository r = new Repository();
-        PlayerDTO player = new PlayerDTO(0, "Ronald Federico", "Araujo Da Silva", "1999-03-07", "Uruguaya", 188.0, 79.0, 60000.0, ".....", "65546056", "6634243", "Barcelona", "96878969"); 
-        r.addPlayer(player, 1);
+   
+        //r.addPlayer(player, 1);
+        Repository.GetPositions(0);
         /*
         Repository.GetPlayersByTeam(1);
         TeamDTO tdto = new TeamDTO();

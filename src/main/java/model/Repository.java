@@ -667,6 +667,7 @@ public class Repository {
         try {
             URL url = new URL("http://localhost:44364/api/delete/teamsquad/" + idTeam + "/" + idPlayer);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
             conn.setRequestMethod("DELETE");
             conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
             conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
@@ -680,8 +681,7 @@ public class Repository {
                 while (scanner.hasNext()) {
                     informationString.append(scanner.nextLine());
                 }
-                scanner.close();
-                System.out.println(String.valueOf(informationString));               
+                scanner.close();            
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -689,5 +689,42 @@ public class Repository {
         }
             return true;
         }
+    public static ArrayList<PositionDTO> GetPositions(int idClub) {  
+        ArrayList<PositionDTO> positions = new ArrayList<PositionDTO>();
+        try {
+            URL url = new URL("http://localhost:44364/api/positions");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
+            conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
+            } else {
+                StringBuilder informationString = new StringBuilder();
+                Scanner scanner = new Scanner(url.openStream(), "utf-8");
+                while (scanner.hasNext()) {
+                    informationString.append(scanner.nextLine());
+                }
+                scanner.close();
+                JSONParser parse = new JSONParser();
+                JSONArray dataObject = (JSONArray) parse.parse(String.valueOf(informationString));
+                for(int i = 0; i < dataObject.size(); i++ ){
+                    PositionDTO position = new PositionDTO();
+                    JSONObject countryData = (JSONObject) dataObject.get(i);
+                    position.setPosID(Integer.parseInt(countryData.get("id").toString()));  
+                    position.setPosName(countryData.get("name").toString());
+                    position.setLeters(countryData.get("leters").toString());
+                    positions.add(position);
+                    System.out.println(position);
+                }   
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return positions;
+    }
   
 }

@@ -216,7 +216,7 @@ public class StartController implements Initializable {
                                 );
                                 btn.setOnAction((ActionEvent event) -> {
                                     PlayerTV dat = getTableView().getItems().get(getIndex());
-                                    Repository res = new Repository();
+                                    Repository.RemovePlayerFromTeam(idTeam, dat.getId());
                                     
                                     
                                     playerstv.remove(dat); 

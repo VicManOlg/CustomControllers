@@ -17,7 +17,7 @@ public class PositionDTO {
 
     @Override
     public String toString() {
-        return "PositionDTO{" + "posID=" + posID + ", posName=" + posName + ", leters=" + leters + '}';
+        return  posName;
     }
 
     public PositionDTO() {

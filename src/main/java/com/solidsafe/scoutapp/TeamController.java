@@ -62,6 +62,7 @@ public class TeamController implements Initializable {
 
     @FXML
     private void OnBtnAddClickListenner(ActionEvent event) throws IOException {
+        boolean exit = false;
         if(btnAdd.getText().equals("Modificar")){
             TeamDTO t = new TeamDTO(idTeam, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
             Repository r = new Repository();
@@ -70,7 +71,7 @@ public class TeamController implements Initializable {
         else{
             TeamDTO t = new TeamDTO(0, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
             Repository r = new Repository();
-            r.sendPOST(t, 1);
+            exit = r.sendPOST(t, 1);
         }
         
     }

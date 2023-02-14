@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="162.0" prefWidth="408.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.solidsafe.scoutapp.PositionsController">
+   <children>
+      <MFXComboBox fx:id="cbPositions" floatMode="ABOVE" layoutX="48.0" layoutY="44.0" prefHeight="40.0" prefWidth="171.0" />
+      <Button layoutX="259.0" layoutY="44.0" mnemonicParsing="false" onAction="#ONbtnAddClickListenner" prefHeight="40.0" prefWidth="76.0" style="-fx-background-color: black;" text="Añadir" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
+      <MFXCheckbox layoutX="48.0" layoutY="104.0" prefHeight="20.0" prefWidth="117.0" text="Primera Posicion" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </MFXCheckbox>
+   </children>
+</AnchorPane>
