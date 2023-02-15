@@ -104,7 +104,12 @@ public class StartController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<CategoryDTO> cats = Repository.GetCategories();
+        
+         
+  
+    }
+    public void loadMenu(){
+        List<CategoryDTO> cats = Repository.GetCategories(clubDTO.getClubId());
         catdto = FXCollections.observableArrayList();
         for (CategoryDTO cat : cats){
             catdto.add(cat);
@@ -184,9 +189,7 @@ public class StartController implements Initializable {
             btsntv.add(btn);                           
         }
         lvTeams.setItems(btsntv);
-         
-  
-    }    
+    }
     public void displayName(ScoutDTO scout, ClubDTO c){
         lbName.setText(scout.getScoutName() + " " + scout.getScoutSurname());
         scoutDTO = scout;
@@ -194,6 +197,7 @@ public class StartController implements Initializable {
         Image m = new Image(c.getClubPhoto());
         ivShield.setImage(m);
         lbClub.setText(c.getClubName());
+        loadMenu();
     }
     
     private void addButtonDeleteToTable() {
@@ -365,11 +369,13 @@ public class StartController implements Initializable {
 
     @FXML
     private void OnAddClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("team.fxml"));
         Stage stage = new Stage();
-        Parent root = FXMLLoader.load(
-        TeamController.class.getResource("team.fxml"));
+        Parent root = loader.load();
+        TeamController tc = loader.getController();
+        tc.loadComboBox(clubDTO.getClubId());
         stage.setScene(new Scene(root));
-        stage.setTitle("Añadir Equipo");
+        stage.setTitle("Crear Equipo");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(
         ((Node)event.getSource()).getScene().getWindow() );
@@ -493,7 +499,7 @@ public class StartController implements Initializable {
                         for(PlayerDTO p : players){
                             PlayerTV ptv = new PlayerTV();
                             ptv.setId(p.getPlayerID());
-                            ptv.setNombre(p.getPlayerName() + " " + p.getPlayerSurname() );
+                            ptv.setNombre(p.getPlayerName() + " " + p.getPlayerSurname());
                             ptv.setEdad(12);
                             ptv.setPosicion("ld");
                             playerstv.add(ptv);
@@ -506,8 +512,20 @@ public class StartController implements Initializable {
         }
         lvTeams.setItems(btsntv);     
     }
-                
-    
-    
-        
+
+    @FXML
+    private void OnCategoryClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
+        Parent root = loader.load();
+        CategoryController categoryController = loader.getController();
+        categoryController.loadCategory(clubDTO);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        //stage.setMaximized(false);   
+        stage.show();
+        //stage.setMaximized(true);
+    }
+                       
 }

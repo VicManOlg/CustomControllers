@@ -9,3 +9,17 @@
 -fx-text-fill: white;
 -fx-text-background-color: white;
 }
+.list-view .virtual-flow .scroll-bar:vertical .thumb{
+    -fx-background-color:  #4d4d4d;
+}
+.list-view .virtual-flow .scroll-bar:horizontal .thumb {
+    -fx-background-color:  #4d4d4d;
+}
+.list-view .virtual-flow .scroll-bar:vertical,
+.list-view .virtual-flow .scroll-bar:vertical .track,
+.list-view .virtual-flow .scroll-bar:vertical .track-background,
+.list-view .virtual-flow .scroll-bar:horizontal,
+.list-view .virtual-flow .scroll-bar:horizontal .track,
+.list-view .virtual-flow .scroll-bar:horizontal .track-background {
+    -fx-background-color: transparent;
+}

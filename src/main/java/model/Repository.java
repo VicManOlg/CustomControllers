@@ -187,10 +187,10 @@ public class Repository {
         }
         return teams;
     }
-    public static ArrayList<CategoryDTO> GetCategories() {  
+    public static ArrayList<CategoryDTO> GetCategories(int id) {  
         ArrayList<CategoryDTO> cats = new ArrayList<CategoryDTO>();
         try {
-            URL url = new URL("http://localhost:44364/api/categorys");
+            URL url = new URL("http://localhost:44364/api/categorys/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -725,6 +725,71 @@ public class Repository {
             return null;
         }
         return positions;
+    }
+    public boolean addPlayerPosition(int idPlayer, int idPos, int firstPos) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{").append("\"PlayerID\":")
+                .append(idPlayer)
+                .append(",")
+                .append("\"PositionID\":\"")
+                .append(idPos)
+                .append("\",")
+                .append("\"FirstPosition\":\"")
+                .append(firstPos)
+                .append("\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url("http://localhost:44364/api/post/playerposition")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
+    public boolean addCategory(CategoryDTO cat, int firstPos) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"CategoryID\":"+0+",")
+                .append("\"CategotyName\":\""+cat.getCatName()+"\",")
+                .append("\"idClub\":\""+cat.getCatId()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url("http://localhost:44364/api/post/playerposition")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
     }
   
 }

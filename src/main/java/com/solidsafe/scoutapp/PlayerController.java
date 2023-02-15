@@ -86,6 +86,7 @@ public class PlayerController implements Initializable {
     private ClubDTO club;
     @FXML
     private MFXTextField tfSurname;
+    private PlayerDTO player;
     /**
      * Initializes the controller class.
      */
@@ -122,6 +123,7 @@ public class PlayerController implements Initializable {
         
     }
     public void displayPlayer(PlayerDTO p) throws ParseException{
+        this.player = p;
         btnAction.setVisible(false);
         rowName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         rowLogo.setCellValueFactory(new PropertyValueFactory<>("Img"));
@@ -206,7 +208,7 @@ public class PlayerController implements Initializable {
         Stage stage = new Stage();
         Parent root = loader.load();
         PositionsController pc = loader.getController();
-        
+        pc.setPlayer(this.player);
         stage.setScene(new Scene(root));
         stage.setTitle("");
         stage.initModality(Modality.WINDOW_MODAL);

@@ -43,12 +43,7 @@ public class TeamController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        List<CategoryDTO> cats = Repository.GetCategories();
-        catdto = FXCollections.observableArrayList();
-        for (CategoryDTO cat : cats){
-            catdto.add(cat);
-        }
-        tfCat.setItems(catdto);
+        
     }    
 
     @FXML
@@ -58,6 +53,14 @@ public class TeamController implements Initializable {
         
         
 
+    }
+    public void loadComboBox(int id){
+        List<CategoryDTO> cats = Repository.GetCategories(id);
+        catdto = FXCollections.observableArrayList();
+        for (CategoryDTO cat : cats){
+            catdto.add(cat);
+        }
+        tfCat.setItems(catdto);
     }
 
     @FXML
@@ -85,6 +88,7 @@ public class TeamController implements Initializable {
         ivUrl.setImage(image); 
         idTeam = tdto.getTeamID();
         idClub = club;
+        loadComboBox(idClub);
 
 
     }

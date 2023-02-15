@@ -1,7 +1,9 @@
 package com.solidsafe.scoutapp;
 
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXRadioButton;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,6 +12,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import model.PlayerDTO;
 import model.PositionDTO;
 import model.Repository;
 
@@ -22,31 +26,45 @@ public class PositionsController implements Initializable {
 
     @FXML
     private MFXComboBox<PositionDTO> cbPositions;
-    @FXML
-    private MFXRadioButton rbFirst;
-    @FXML
-    private MFXRadioButton rbSecond;
-    @FXML
-    private MFXRadioButton rbStandar;
     ObservableList<PositionDTO> pObservableList;
-    
+    @FXML
+    private MFXCheckbox ckbFirstPos;
+    private PlayerDTO player;
     
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+    }    
+
+    @FXML
+    private void ONbtnAddClickListenner(ActionEvent event) throws IOException {
+        int firstPos;
+        if(ckbFirstPos.isSelected()){
+            firstPos = 0;
+        }
+        else{
+            firstPos = 1;
+        }
+        Repository repo = new Repository();
+        repo.addPlayerPosition(this.player.getPlayerID(), cbPositions.getSelectedIndex() + 1, firstPos);
+        
+    }
+    
+    public void setPlayer(PlayerDTO player){
+        this.player = player;
+        loadComboBox();  
+    }
+    
+    public void loadComboBox(){
         ArrayList<PositionDTO> pDTO = Repository.GetPositions(0);
         pObservableList = FXCollections.observableArrayList();
         for(PositionDTO p : pDTO){
             pObservableList.add(p);
         }
         cbPositions.setItems(pObservableList);
-    }    
-
-    @FXML
-    private void ONbtnAddClickListenner(ActionEvent event) {
-        
     }
     
 }

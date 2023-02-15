@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -95,6 +96,18 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+            </Button>
+            <Button layoutX="12.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnCategoryClickListenner" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="     Categoria" textFill="#4b4b4b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.44" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
          <opaqueInsets>
@@ -210,13 +223,17 @@
                </children>
             </HBox>
             <ComboBox fx:id="cbCat" onAction="#OnSelectionChanged" prefHeight="26.0" prefWidth="214.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" stylesheets="@../../../css/combobox.css" />
-            <ListView fx:id="lvTeams" prefHeight="514.0" prefWidth="228.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%; -fx-background-radius: 30px;" stylesheets="@../../../css/list.css" VBox.vgrow="ALWAYS">
+            <ListView fx:id="lvTeams" prefHeight="451.0" prefWidth="216.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%; -fx-background-radius: 30px; -fx-border-radius: 30px;" stylesheets="@../../../css/list.css" VBox.vgrow="ALWAYS">
                <VBox.margin>
                   <Insets bottom="1.0" />
                </VBox.margin>
                <padding>
                   <Insets bottom="1.0" />
-               </padding></ListView>
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="100.0" />
+               </opaqueInsets></ListView>
+            <Separator orientation="VERTICAL" prefHeight="17.0" prefWidth="6.0" visible="false" />
          </children>
       </VBox>
    </children>
