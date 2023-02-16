@@ -12,21 +12,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="570.0" prefWidth="887.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.CategoryController">
+<AnchorPane id="AnchorPane" prefHeight="628.0" prefWidth="887.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.CategoryController">
    <children>
       <TextField fx:id="tfCategory" layoutX="279.0" layoutY="107.0" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: gray;" />
-      <TextField fx:id="tfSiglas" layoutX="279.0" layoutY="191.0" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: gray;" />
       <Label layoutX="279.0" layoutY="71.0" prefHeight="22.0" prefWidth="182.0" text="Nombre de la Categoria:" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="279.0" layoutY="155.0" prefHeight="22.0" prefWidth="182.0" text="Siglas de la Categoria:" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font>
-      </Label>
-      <Button layoutX="279.0" layoutY="240.0" mnemonicParsing="false" onAction="#OnBtnAddClickListenner" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black;" text="Añadir" textFill="WHITE">
+      <Button layoutX="279.0" layoutY="149.0" mnemonicParsing="false" onAction="#OnBtnAddClickListenner" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black;" text="Añadir" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -123,10 +117,39 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="      Partidos " textFill="#4b4b4b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.27" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/campo-de-futbol%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="      Ajustes  " textFill="#4b4b4b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/1486564708-gear-cog_81526.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
          </children>
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </VBox>
+      <Label layoutX="234.0" layoutY="455.0" opacity="0.54" prefHeight="18.0" prefWidth="91.0" text="Version 0.1" textFill="WHITE" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="53.0">
+         <font>
+            <Font name="Courier New" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

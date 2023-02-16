@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="791.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.PlayersController">
+<AnchorPane id="AnchorPane" prefHeight="632.0" prefWidth="1094.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.PlayersController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="158.0" spacing="10.0" style="-fx-background-color: rgba(0,0,0,0.4542191876750701) 79%; -fx-border-radius: 30px; -fx-background-radius: 30px;" styleClass="rgba(0,0,0,0.4542191876750701) 79%" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
@@ -103,6 +103,30 @@
                   <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="      Partidos " textFill="#4b4b4b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.27" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/campo-de-futbol%20(1).png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="      Ajustes  " textFill="#4b4b4b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.37" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/1486564708-gear-cog_81526.png" />
                      </image>
                   </ImageView>
                </graphic>
