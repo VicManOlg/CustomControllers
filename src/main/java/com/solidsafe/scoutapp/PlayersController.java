@@ -23,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -143,7 +144,7 @@ public class PlayersController implements Initializable {
         pc.addPlayer(clubDTO);
         stage.setScene(new Scene(root));
         stage.setTitle("Añadir Jugador");
-        stage.setWidth(520);
+        stage.setWidth(800);
         stage.initModality(Modality.WINDOW_MODAL);
         stage.initOwner(((Node)event.getSource()).getScene().getWindow());
         
@@ -195,5 +196,20 @@ public class PlayersController implements Initializable {
         stage.setWidth(1300);
         stage.setHeight(780);
         stage.show();
+    }
+
+    @FXML
+    private void OnCategoryClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
+        Parent root = loader.load();
+        CategoryController categoryController = loader.getController();
+        categoryController.loadCategory(clubDTO);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        //stage.setMaximized(false);   
+        stage.show();
+        //stage.setMaximized(true);
     }
 }

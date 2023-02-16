@@ -20,6 +20,7 @@ public class PlayerDTO {
     private String agent;
     private String contactAgent;
     private String contactFamily;
+    private String photo;
 
     public PlayerDTO() {
     }
@@ -36,6 +37,19 @@ public class PlayerDTO {
         this.contactFamily = contactFamily;
     }
     
+    public PlayerDTO(int playerID, String nacionality, double heigth, double weight, double price, String contact, String agent, String contactAgent, String contactFamily, String photo) {
+        this.playerID = playerID;
+        this.nacionality = nacionality;
+        this.heigth = heigth;
+        this.weight = weight;
+        this.price = price;
+        this.contact = contact;
+        this.agent = agent;
+        this.contactAgent = contactAgent;
+        this.contactFamily = contactFamily;
+        this.photo = photo;
+    }
+    
     public PlayerDTO(int playerID, String playerName, String playerSurname, String playerBirth, String nacionality, double heigth, double weight, double price, String contract, String contact, String agent, String contactAgent, String contactFamily) {
         this.playerID = playerID;
         this.playerName = playerName;
@@ -50,6 +64,31 @@ public class PlayerDTO {
         this.agent = agent;
         this.contactAgent = contactAgent;
         this.contactFamily = contactFamily;
+    }
+
+    public PlayerDTO(int playerID, String playerName, String playerSurname, String playerBirth, String nacionality, double heigth, double weight, double price, String contract, String contact, String agent, String contactAgent, String contactFamily, String photo) {
+        this.playerID = playerID;
+        this.playerName = playerName;
+        this.playerSurname = playerSurname;
+        this.playerBirth = playerBirth;
+        this.nacionality = nacionality;
+        this.heigth = heigth;
+        this.weight = weight;
+        this.price = price;
+        this.contract = contract;
+        this.contact = contact;
+        this.agent = agent;
+        this.contactAgent = contactAgent;
+        this.contactFamily = contactFamily;
+        this.photo = photo;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public int getPlayerID() {
@@ -158,8 +197,10 @@ public class PlayerDTO {
 
     @Override
     public String toString() {
-        return "PlayerDTO{" + "playerID=" + playerID + ", playerName=" + playerName + ", playerSurname=" + playerSurname + ", playerBirth=" + playerBirth + ", nacionality=" + nacionality + ", heigth=" + heigth + ", weight=" + weight + ", price=" + price + ", contract=" + contract + ", contact=" + contact + ", agent=" + agent + ", contactAgent=" + contactAgent + ", contactFamily=" + contactFamily + '}';
+        return "PlayerDTO{" + "playerID=" + playerID + ", playerName=" + playerName + ", playerSurname=" + playerSurname + ", playerBirth=" + playerBirth + ", nacionality=" + nacionality + ", heigth=" + heigth + ", weight=" + weight + ", price=" + price + ", contract=" + contract + ", contact=" + contact + ", agent=" + agent + ", contactAgent=" + contactAgent + ", contactFamily=" + contactFamily + ", photo=" + photo + '}';
     }
+
+    
 
     @Override
     public int hashCode() {

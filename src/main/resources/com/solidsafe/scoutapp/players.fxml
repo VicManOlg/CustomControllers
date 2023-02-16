@@ -41,7 +41,7 @@
                   <ComboBox fx:id="cbCat" layoutX="6.0" layoutY="14.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.4542191876750701) 79%;" stylesheets="@../../../css/combobox.css" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" opacity="0.8" prefHeight="36.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Dashboard" textFill="#716b6b">
+            <Button mnemonicParsing="false" opacity="0.8" prefHeight="36.0" prefWidth="148.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Inicio      " textFill="#716b6b">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
             </Button>
             <Button mnemonicParsing="false" onAction="#OnMenuPlayerClickListenner" opacity="0.57" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Equipos" textFill="#8e8e8e">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.78" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.68" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/equipo.png" />
                      </image>
@@ -83,9 +83,9 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" onAction="#OnMenuReviewClickListenner" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="       Review" textFill="#4b4b4b">
+            <Button mnemonicParsing="false" onAction="#OnMenuReviewClickListenner" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="      Revision" textFill="#4b4b4b">
                <graphic>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.19" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/review.png" />
                      </image>
@@ -97,6 +97,18 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+            </Button>
+            <Button layoutX="12.0" layoutY="389.0" mnemonicParsing="false" onAction="#OnCategoryClickListenner" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="     Categoria" textFill="#4b4b4b">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.24" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
          <opaqueInsets>

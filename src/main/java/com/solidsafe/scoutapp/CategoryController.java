@@ -6,6 +6,7 @@ import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
 import io.github.palexdev.materialfx.filter.DoubleFilter;
 import io.github.palexdev.materialfx.filter.IntegerFilter;
 import io.github.palexdev.materialfx.filter.StringFilter;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -13,8 +14,12 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import model.CategoryDTO;
 import model.ClubDTO;
 import model.PlayerDTO;
@@ -34,6 +39,16 @@ public class CategoryController implements Initializable {
     ObservableList<CategoryDTO> categoryList;
     @FXML
     private MFXTableColumn<CategoryDTO> trowName;
+    @FXML
+    private TextField tfCategory;
+    @FXML
+    private TextField tfSiglas;
+    @FXML
+    private Label lbClub;
+    @FXML
+    private Label lbName;
+    @FXML
+    private ImageView ivShield;
     /**
      * Initializes the controller class.
      */
@@ -85,5 +100,20 @@ public class CategoryController implements Initializable {
         {
             return !tbCategory.getSelectionModel().selectionProperty().isEmpty();
         }
+
+    @FXML
+    private void OnBtnAddClickListenner(ActionEvent event) throws IOException {
+        CategoryDTO catDTO = new CategoryDTO(0,tfCategory.getText());
+        Repository repo = new Repository();
+        repo.addCategory(catDTO ,this.club.getClubId());
+    }
+
+    @FXML
+    private void OnPlayerClickListenner(ActionEvent event) {
+    }
+
+    @FXML
+    private void OnReviwClickListenner(ActionEvent event) {
+    }
     
 }

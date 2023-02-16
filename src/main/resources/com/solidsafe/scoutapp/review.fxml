@@ -47,7 +47,7 @@
                   <ComboBox fx:id="cbCat" disable="true" layoutX="6.0" layoutY="14.0" prefWidth="150.0" style="-fx-background-color: rgba(0,0,0,0.4542191876750701) 79%;" stylesheets="@../../../css/combobox.css" visible="false" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="14.0" />
                </children>
             </AnchorPane>
-            <Button mnemonicParsing="false" opacity="0.9" prefHeight="36.0" prefWidth="165.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Dashboard" textFill="#565656">
+            <Button mnemonicParsing="false" opacity="0.9" prefHeight="36.0" prefWidth="165.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Inicio      " textFill="#565656">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="38.0" opacity="0.48" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +89,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(255,0,0,0.4542191876750701) 79%;" text="      Review  " textFill="WHITE">
+            <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="154.0" style="-fx-background-color: rgba(255,0,0,0.4542191876750701) 79%;" text="      Revision" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.85" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,6 +103,18 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+            </Button>
+            <Button layoutX="11.0" layoutY="288.0" mnemonicParsing="false" onAction="#OnCategoryClickListenner" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="     Categoria" textFill="#515151">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.43" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
             </Button>
          </children>
          <opaqueInsets>

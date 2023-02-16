@@ -87,6 +87,10 @@ public class PlayerController implements Initializable {
     @FXML
     private MFXTextField tfSurname;
     private PlayerDTO player;
+    @FXML
+    private ImageView ivPhoto;
+    @FXML
+    private MFXTextField lbUrl;
     /**
      * Initializes the controller class.
      */
@@ -119,11 +123,13 @@ public class PlayerController implements Initializable {
         tvTeams.setVisible(false);
         tablePos.setDisable(true);
         tablePos.setVisible(false);
-        btnAction.setLayoutX(400);
+        //btnAction.setLayoutX(400);
         
     }
     public void displayPlayer(PlayerDTO p) throws ParseException{
         this.player = p;
+        Image playerPhoto = new Image(p.getPhoto());
+        ivPhoto.setImage(playerPhoto);
         btnAction.setVisible(false);
         rowName.setCellValueFactory(new PropertyValueFactory<>("Name"));
         rowLogo.setCellValueFactory(new PropertyValueFactory<>("Img"));
@@ -189,7 +195,7 @@ public class PlayerController implements Initializable {
     private void OnAddClickListenner(ActionEvent event) throws IOException {
         Repository repo = new Repository();
         if(btnAction.getText().equalsIgnoreCase("Añadir")){
-            PlayerDTO player = new PlayerDTO(0, tfNacionality.getText(), Double.parseDouble(tfHeigt.getText()), Double.parseDouble(tfWhigt.getText()), Double.parseDouble(tfPrice.getText()), tfContact.getText(), tfAgent.getText(), tfContactAgent.getText(), tfFamily.getText());
+            PlayerDTO player = new PlayerDTO(0, tfNacionality.getText(), Double.parseDouble(tfHeigt.getText()), Double.parseDouble(tfWhigt.getText()), Double.parseDouble(tfPrice.getText()), tfContact.getText(), tfAgent.getText(), tfContactAgent.getText(), tfFamily.getText(), lbUrl.getText());
             player.setContract(" ");
             player.setPlayerName(tfName.getText());
             player.setPlayerSurname(tfSurname.getText());

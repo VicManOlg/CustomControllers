@@ -275,6 +275,7 @@ public class Repository {
                 .append("\"ContactAgent\":\""+player.getContactAgent()+"\",")
                 .append("\"Agent\":\""+player.getAgent()+"\",")
                 .append("\"ContactFamily\":\""+player.getContactFamily()+"\",")
+                .append("\"Photo\":\""+player.getPhoto()+"\",")
                 .append("}").toString();
 
         // json request body
@@ -405,6 +406,7 @@ public class Repository {
                 player.setContactAgent(countryData.get("ContactAgent").toString());
                 player.setContact(countryData.get("Contact").toString());
                 player.setContactFamily(countryData.get("ContactFamily").toString());
+                player.setPhoto(countryData.get("Photo").toString());
                 //club.setClubPhoto(countryData.get("clubPhoto").toString());
                 System.out.println(player);
             }
@@ -761,13 +763,13 @@ public class Repository {
             return true;
         }
     }
-    public boolean addCategory(CategoryDTO cat, int firstPos) throws IOException {
+    public boolean addCategory(CategoryDTO cat, int clubId) throws IOException {
         // json formatted data
         String json = new StringBuilder()
                 .append("{")
                 .append("\"CategoryID\":"+0+",")
-                .append("\"CategotyName\":\""+cat.getCatName()+"\",")
-                .append("\"idClub\":\""+cat.getCatId()+"\",")
+                .append("\"CategoryName\":\""+cat.getCatName()+"\",")
+                .append("\"idClub\":\""+clubId+"\",")
                 .append("}").toString();
 
         // json request body
@@ -777,7 +779,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("http://localhost:44364/api/post/playerposition")
+                .url("http://localhost:44364/api/post/category")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(body)
                 .build();

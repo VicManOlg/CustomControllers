@@ -277,6 +277,10 @@ public class ReviewController implements Initializable {
         return points;
     }
 
+    @FXML
+    private void OnCategoryClickListenner(ActionEvent event) {
+    }
+
 
     
 
