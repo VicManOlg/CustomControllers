@@ -10,7 +10,7 @@ import javafx.beans.property.SimpleStringProperty;
 public class PlayerTV {
     private SimpleIntegerProperty id = new SimpleIntegerProperty();
     private SimpleStringProperty nombre = new SimpleStringProperty();
-    private SimpleIntegerProperty edad = new SimpleIntegerProperty();
+    private SimpleStringProperty edad = new SimpleStringProperty();
     private SimpleStringProperty posicion = new SimpleStringProperty();
 
     public int getId() {
@@ -29,11 +29,11 @@ public class PlayerTV {
         this.nombre.set(nombre);
     }
 
-    public int getEdad() {
+    public String getEdad() {
         return edad.get();
     }
 
-    public void setEdad(int edad) {
+    public void setEdad(String edad) {
         this.edad.set(edad);
     }
 

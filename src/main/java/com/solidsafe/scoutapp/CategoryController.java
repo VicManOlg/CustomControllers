@@ -16,14 +16,20 @@ import javafx.collections.MapChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.CategoryDTO;
 import model.ClubDTO;
 import model.PlayerDTO;
 import model.Repository;
+import model.ScoutDTO;
 
 /**
  * FXML Controller class
@@ -42,13 +48,12 @@ public class CategoryController implements Initializable {
     @FXML
     private TextField tfCategory;
     @FXML
-    private TextField tfSiglas;
-    @FXML
     private Label lbClub;
     @FXML
     private Label lbName;
     @FXML
     private ImageView ivShield;
+    private ScoutDTO scout;
     /**
      * Initializes the controller class.
      */
@@ -56,8 +61,9 @@ public class CategoryController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }   
-    public void loadCategory(ClubDTO clubDTO){
+    public void loadCategory(ClubDTO clubDTO, ScoutDTO scout){
         this.club = clubDTO;
+        this.scout = scout;
         categories = Repository.GetCategories(club.getClubId());
         setupTable();
         
@@ -114,6 +120,22 @@ public class CategoryController implements Initializable {
 
     @FXML
     private void OnReviwClickListenner(ActionEvent event) {
+    }
+
+    @FXML
+    private void OnBtnTeamsClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("start.fxml"));
+        Parent root = loader.load();
+        StartController stc = loader.getController();
+        stc.displayName(scout, club);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        //stage.setMaximized(false);   
+        stage.setWidth(1300);
+        stage.setHeight(781);
+        stage.show();
     }
     
 }

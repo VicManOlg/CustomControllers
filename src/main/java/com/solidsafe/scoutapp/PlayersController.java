@@ -203,7 +203,7 @@ public class PlayersController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
         Parent root = loader.load();
         CategoryController categoryController = loader.getController();
-        categoryController.loadCategory(clubDTO);
+        categoryController.loadCategory(clubDTO, scoutDTO);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         //stage.setMaximized(false);    

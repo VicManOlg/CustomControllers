@@ -63,7 +63,7 @@
                   <Insets left="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Equipos" textFill="#515151">
+            <Button mnemonicParsing="false" onAction="#OnBtnTeamsClickListenner" prefHeight="38.0" prefWidth="157.0" style="-fx-background-color: rgba(0,0,0,0) 100%;" text="    Equipos" textFill="#515151">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="30.0" opacity="0.38" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -82,13 +82,14 @@ public class TeamController implements Initializable {
     public void UpdateTeam(TeamDTO tdto, int club){
         tfName.setText(tdto.getTeamName());
         tfUrl.setText(tdto.getPicture());
+        loadComboBox(club);
         tfCat.selectIndex(tdto.getCatID() - 1);
         Image image = new Image(tfUrl.getText());
         btnAdd.setText("Modificar");
         ivUrl.setImage(image); 
         idTeam = tdto.getTeamID();
         idClub = club;
-        loadComboBox(idClub);
+        
 
 
     }

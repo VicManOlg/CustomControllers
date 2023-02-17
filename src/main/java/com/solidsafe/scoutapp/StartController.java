@@ -86,7 +86,7 @@ public class StartController implements Initializable {
     @FXML
     private TableView<PlayerTV> tablePlayers;
     @FXML
-    private TableColumn<PlayerTV, SimpleIntegerProperty> rowAge;
+    private TableColumn<PlayerTV, SimpleStringProperty> rowAge;
     @FXML
     private TableColumn<PlayerTV, SimpleIntegerProperty> rowId;
     @FXML
@@ -178,7 +178,7 @@ public class StartController implements Initializable {
                             PlayerTV ptv = new PlayerTV();
                             ptv.setId(p.getPlayerID());
                             ptv.setNombre(p.getPlayerName() + " " + p.getPlayerSurname() );
-                            ptv.setEdad(12);
+                            ptv.setEdad(p.getPlayerBirth());
                             ptv.setPosicion("ld");
                             playerstv.add(ptv);
                         }
@@ -354,7 +354,7 @@ public class StartController implements Initializable {
                             PlayerTV ptv = new PlayerTV();
                             ptv.setId(p.getPlayerID());
                             ptv.setNombre(p.getPlayerName() + " " + p.getPlayerSurname() );
-                            ptv.setEdad(12);
+                            ptv.setEdad(p.getPlayerBirth());
                             ptv.setPosicion("ld");
                             playerstv.add(ptv);
                         }
@@ -436,17 +436,16 @@ public class StartController implements Initializable {
     private void OnBtnSquadClickListenner(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("team_players.fxml"));
         Parent root = loader.load();
+        Stage stage = new Stage();
         Team_playersController tpController = loader.getController();
         tpController.getTeam(idTeam, clubDTO);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        //stage.setMaximized(false);    
-        stage.setScene(scene);
-        //stage.setMaximized(false);   
-        stage.setWidth(1150);
-        stage.setHeight(779);
-        stage.show();
+       stage.setScene(new Scene(root));
+        stage.setTitle("Crear Equipo");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(
+        ((Node)event.getSource()).getScene().getWindow() );
         //stage.setMaximized(true);
+        stage.show();
     }
 
     @FXML
@@ -500,7 +499,7 @@ public class StartController implements Initializable {
                             PlayerTV ptv = new PlayerTV();
                             ptv.setId(p.getPlayerID());
                             ptv.setNombre(p.getPlayerName() + " " + p.getPlayerSurname());
-                            ptv.setEdad(12);
+                            ptv.setEdad(p.getPlayerBirth());
                             ptv.setPosicion("ld");
                             playerstv.add(ptv);
                         }
@@ -518,7 +517,7 @@ public class StartController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
         Parent root = loader.load();
         CategoryController categoryController = loader.getController();
-        categoryController.loadCategory(clubDTO);
+        categoryController.loadCategory(clubDTO, scoutDTO);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         //stage.setMaximized(false);    
