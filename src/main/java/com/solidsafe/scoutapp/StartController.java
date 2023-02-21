@@ -511,6 +511,8 @@ public class StartController implements Initializable {
         }
         lvTeams.setItems(btsntv);     
     }
+    
+    
 
     @FXML
     private void OnCategoryClickListenner(ActionEvent event) throws IOException {

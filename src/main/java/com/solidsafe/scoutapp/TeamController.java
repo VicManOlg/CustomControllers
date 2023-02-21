@@ -11,9 +11,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import model.CategoryDTO;
 import model.Repository;
 import model.TeamDTO;
@@ -70,11 +74,18 @@ public class TeamController implements Initializable {
             TeamDTO t = new TeamDTO(idTeam, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
             Repository r = new Repository();
             r.updateTeam(t, idClub);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            
         }
         else{
             TeamDTO t = new TeamDTO(0, tfName.getText(), tfCat.getSelectedIndex() + 1, tfUrl.getText()); 
             Repository r = new Repository();
             exit = r.sendPOST(t, 1);
+            
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.close();
+            
         }
         
     }
@@ -89,9 +100,8 @@ public class TeamController implements Initializable {
         ivUrl.setImage(image); 
         idTeam = tdto.getTeamID();
         idClub = club;
-        
-
-
     }
+    
+
     
 }
