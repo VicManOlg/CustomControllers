@@ -56,6 +56,8 @@ public class PositionsController implements Initializable {
         Node source = (Node) event.getSource();
         Stage stage = (Stage) source.getScene().getWindow();
         stage.close();
+        
+        stage.initOwner(((Node)event.getSource()).getScene().getWindow());
     }
     
     public void setPlayer(PlayerDTO player){
