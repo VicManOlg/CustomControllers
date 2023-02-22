@@ -12,7 +12,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.ComboBox;
+import javafx.stage.Stage;
 import model.PlayerDTO;
 import model.PositionDTO;
 import model.Repository;
@@ -51,6 +53,9 @@ public class PositionsController implements Initializable {
         Repository repo = new Repository();
         repo.addPlayerPosition(this.player.getPlayerID(), cbPositions.getSelectedIndex() + 1, firstPos);
         
+        Node source = (Node) event.getSource();
+        Stage stage = (Stage) source.getScene().getWindow();
+        stage.close();
     }
     
     public void setPlayer(PlayerDTO player){

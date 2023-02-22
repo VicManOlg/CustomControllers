@@ -149,6 +149,7 @@ public class PlayersController implements Initializable {
         stage.initOwner(((Node)event.getSource()).getScene().getWindow());
         
         stage.show(); 
+        
     }
 
     @FXML

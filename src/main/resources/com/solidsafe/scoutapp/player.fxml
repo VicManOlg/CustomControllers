@@ -16,7 +16,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="614.0" prefWidth="1134.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.PlayerController">
    <children>
-      <GridPane alignment="CENTER_LEFT" layoutX="287.0" layoutY="43.0" prefHeight="318.0" prefWidth="432.0">
+      <GridPane alignment="CENTER_LEFT" layoutX="287.0" layoutY="34.0" prefHeight="338.0" prefWidth="432.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.1999755859375" minWidth="10.0" prefWidth="191.99998779296874" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="245.5999755859375" minWidth="10.0" prefWidth="239.20001220703125" />
@@ -70,7 +70,9 @@
             </Label>
             <MFXTextField fx:id="tfId" editable="false" floatMode="ABOVE" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <MFXTextField fx:id="tfName" floatMode="ABOVE" layoutX="193.0" layoutY="19.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <MFXTextField fx:id="tfNacionality" floatMode="ABOVE" layoutX="193.0" layoutY="107.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <MFXTextField fx:id="tfSurname" floatMode="ABOVE" layoutX="193.0" layoutY="107.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="tfBirthdate" prefHeight="26.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <MFXTextField fx:id="tfNacionality" floatMode="ABOVE" layoutX="193.0" layoutY="61.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <MFXTextField fx:id="tfHeigt" floatMode="ABOVE" layoutX="193.0" layoutY="151.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <MFXTextField fx:id="tfWhigt" floatMode="ABOVE" layoutX="193.0" layoutY="264.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <MFXTextField fx:id="tfPrice" floatMode="ABOVE" layoutX="193.0" layoutY="224.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
@@ -79,8 +81,6 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="tfSurname" floatMode="ABOVE" layoutX="193.0" layoutY="61.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker fx:id="tfBirthdate" prefHeight="26.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label layoutX="10.0" layoutY="48.0" prefHeight="26.0" prefWidth="142.0" text="Datos personales" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
