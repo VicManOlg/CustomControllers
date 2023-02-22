@@ -3,7 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.solidsafe</groupId>
     <artifactId>ScoutApp</artifactId>
-    <version>1.0</version>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
@@ -96,5 +97,4 @@
             </plugin>
         </plugins>
     </build>
-    <name>ScoutIOT</name>
 </project>
