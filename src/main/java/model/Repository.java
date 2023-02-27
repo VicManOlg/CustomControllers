@@ -24,10 +24,12 @@ import org.json.simple.parser.ParseException;
  * @author Victor
  */
 public class Repository {
+    
+    private static String apiUrl = "https://iotscouting.com/api/";
     public static ScoutDTO  login(String name, String pass) {
         ScoutDTO scout = new ScoutDTO();
         try {
-            URL url = new URL("https://iotscouting.com/api/login/" + name + "/" + pass);
+            URL url = new URL(apiUrl + "login/" + name + "/" + pass);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
@@ -67,7 +69,7 @@ public class Repository {
         ArrayList<TeamDTO> teams = new ArrayList<TeamDTO>();
         try {
             cat = cat.replaceAll(" ", "%20");
-            URL url = new URL("https://iotscouting.com/api/teams/category/" + id+"/"+cat);
+            URL url = new URL(apiUrl + "teams/category/" + id+"/"+cat);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -105,7 +107,7 @@ public class Repository {
     public static ArrayList<PlayerDTO> GetPlayersByTeam(int id) {  
         ArrayList<PlayerDTO> players = new ArrayList<PlayerDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/players/team/" + id);
+            URL url = new URL(apiUrl + "players/team/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
@@ -153,7 +155,7 @@ public class Repository {
         ArrayList<TeamDTO> teams = new ArrayList<TeamDTO>();
         try {
             cat = cat.replaceAll(" ", "%20");
-            URL url = new URL("https://iotscouting.com/api/teams/category/" + id+"/"+name+"/"+cat);
+            URL url = new URL(apiUrl + "teams/category/" + id+"/"+name+"/"+cat);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -190,7 +192,7 @@ public class Repository {
     public static ArrayList<CategoryDTO> GetCategories(int id) {  
         ArrayList<CategoryDTO> cats = new ArrayList<CategoryDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/categorys/" + id);
+            URL url = new URL(apiUrl + "categorys/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -242,7 +244,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("https://iotscouting.com/api/post/team")
+                .url(apiUrl + "post/team")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(body)
                 .build();
@@ -285,7 +287,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("https://iotscouting.com/api/post/player")
+                .url(apiUrl + "post/player")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(body)
                 .build();
@@ -303,7 +305,7 @@ public class Repository {
     public static ClubDTO  GetClub(int id) {
         ClubDTO club = new ClubDTO();
         try {
-            URL url = new URL("https://iotscouting.com/api/club/" + id);
+            URL url = new URL(apiUrl + "club/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
@@ -337,7 +339,7 @@ public class Repository {
     public static  ArrayList<GameDTO>  GetGamesByTeam(int id) {
         ArrayList<GameDTO> games = new ArrayList<GameDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/games/team/" + id);
+            URL url = new URL(apiUrl + "games/team/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
@@ -374,7 +376,7 @@ public class Repository {
     public static PlayerDTO  GetPlayer(int id) {
         PlayerDTO player = new PlayerDTO();
         try {
-            URL url = new URL("https://iotscouting.com/api/player/" + id);
+            URL url = new URL(apiUrl + "player/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; utf-8");
@@ -419,7 +421,7 @@ public class Repository {
     public static  ArrayList<TeamDTO>  GetPlayerTeams(int id) {
         ArrayList<TeamDTO> teams = new ArrayList<TeamDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/player/teams/" + id);
+            URL url = new URL(apiUrl + "player/teams/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
@@ -457,7 +459,7 @@ public class Repository {
     public static  ArrayList<PositionDTO>  GetPlayerPositions(int id) {
         ArrayList<PositionDTO> positions = new ArrayList<PositionDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/player/position/" + id);
+            URL url = new URL(apiUrl + "player/position/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
@@ -494,7 +496,7 @@ public class Repository {
     public static  ArrayList<ReviewDTO>  GetScoutReviews(int id) {
         ArrayList<ReviewDTO> reviews = new ArrayList<ReviewDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/scout/reviews/" + id);
+            URL url = new URL(apiUrl + "scout/reviews/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
             conn.setRequestMethod("GET");
@@ -559,7 +561,7 @@ public class Repository {
     public static ArrayList<PlayerDTO> GetPlayers(int id) {  
         ArrayList<PlayerDTO> players = new ArrayList<PlayerDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/players/" + id);
+            URL url = new URL(apiUrl + "players/" + id);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
@@ -619,7 +621,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("https://iotscouting.com/api/post/squad")
+                .url(apiUrl + "post/squad")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(body)
                 .build();
@@ -651,7 +653,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("https://iotscouting.com/api/put/team")
+                .url(apiUrl + "put/team")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .put(body)
                 .build();
@@ -667,7 +669,7 @@ public class Repository {
     }
     public static boolean RemovePlayerFromTeam(int idTeam, int idPlayer) {  
         try {
-            URL url = new URL("https://iotscouting.com/api/delete/teamsquad/" + idTeam + "/" + idPlayer);
+            URL url = new URL(apiUrl + "delete/teamsquad/" + idTeam + "/" + idPlayer);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("DELETE");
@@ -694,7 +696,7 @@ public class Repository {
     public static ArrayList<PositionDTO> GetPositions(int idClub) {  
         ArrayList<PositionDTO> positions = new ArrayList<PositionDTO>();
         try {
-            URL url = new URL("https://iotscouting.com/api/positions");
+            URL url = new URL(apiUrl + "positions");
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
@@ -749,7 +751,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("https://iotscouting.com/api/post/playerposition")
+                .url(apiUrl + "post/playerposition")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(body)
                 .build();
@@ -779,7 +781,7 @@ public class Repository {
         );
 
         Request request = new Request.Builder()
-                .url("https://iotscouting.com/api/post/category")
+                .url(apiUrl + "post/category")
                 .addHeader("User-Agent", "OkHttp Bot")
                 .post(body)
                 .build();
