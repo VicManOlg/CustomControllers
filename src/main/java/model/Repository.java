@@ -1,6 +1,8 @@
 package model;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -12,6 +14,11 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.HttpDelete;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -59,7 +66,7 @@ public class Repository {
                 scout.setRol(countryData.get("Rol").toString());
                 System.out.println(scout);
             }
-        } catch (Exception e) {
+        } catch (IOException | RuntimeException | ParseException e) {
             e.printStackTrace();
             return null;
         }
@@ -795,5 +802,33 @@ public class Repository {
             return true;
         }
     }
+    
+    public static boolean deleteEmployee(int id) throws ClientProtocolException, IOException {
+         try {
+            URL url = new URL(apiUrl + "delete/team/" + id);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("DELETE");
+            conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
+            conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
+            } else {
+                StringBuilder informationString = new StringBuilder();
+                Scanner scanner = new Scanner(url.openStream(), "utf-8");
+                while (scanner.hasNext()) {
+                    informationString.append(scanner.nextLine());
+                }
+                scanner.close();            
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+            return true;
+        }
+
   
 }

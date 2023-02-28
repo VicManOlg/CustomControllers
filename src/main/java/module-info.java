@@ -5,6 +5,8 @@ module com.solidsafe.scoutapp {
     requires MaterialFX;
     requires json.simple;
     requires okhttp3;
+    requires org.apache.httpcomponents.httpcore;
+    requires org.apache.httpcomponents.httpclient;
     
 
 

@@ -528,5 +528,10 @@ public class StartController implements Initializable {
         stage.show();
         //stage.setMaximized(true);
     }
+
+    @FXML
+    private void OnBtnDeleteClickListenner(ActionEvent event) throws IOException {
+        Repository.deleteEmployee(idTeam);
+    }
                        
 }

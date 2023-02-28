@@ -185,7 +185,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </MFXButton>
-            <MFXButton fx:id="btnDelete" depthLevel="LEVEL5" prefHeight="55.0" prefWidth="119.0" rippleColor="WHITE" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%; -fx-border-radius: 30px; -fx-background-radius: 30px;" text="Eliminar" textFill="WHITE">
+            <MFXButton fx:id="btnDelete" depthLevel="LEVEL5" onAction="#OnBtnDeleteClickListenner" prefHeight="55.0" prefWidth="119.0" rippleColor="WHITE" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%; -fx-border-radius: 30px; -fx-background-radius: 30px;" text="Eliminar" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="39.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
                      <image>
