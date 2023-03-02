@@ -190,6 +190,71 @@ public class PlayerController implements Initializable {
         tablePos.setItems(positionsTV);
         
     }
+    public void updatePlayer(PlayerDTO p) throws ParseException{
+        this.player = p;
+        Image playerPhoto = new Image(p.getPhoto());
+        ivPhoto.setImage(playerPhoto);
+        rowName.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        rowLogo.setCellValueFactory(new PropertyValueFactory<>("Img"));
+        rowId.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        rowLeter.setCellValueFactory(new PropertyValueFactory<>("Leters"));
+        rowPos.setCellValueFactory(new PropertyValueFactory<>("Name"));
+        teamsTV = FXCollections.observableArrayList();
+        positionsTV = FXCollections.observableArrayList();
+        tfId.setText(p.getPlayerID()+"");
+        tfName.setAllowEdit(false);
+        tfSurname.setAllowEdit(false);
+        tfId.setAllowEdit(false);
+        tfBirthdate.setEditable(true);
+        tfNacionality.setAllowEdit(false);
+        tfHeigt.setAllowEdit(false);
+        tfWhigt.setAllowEdit(false);
+        tfContact.setAllowEdit(false);
+        tfPrice.setAllowEdit(false);
+        tfAgent.setAllowEdit(false);
+        tfContactAgent.setAllowEdit(false);
+        tfFamily.setAllowEdit(false);
+        tfName.setText(p.getPlayerName());
+        tfBirthdate.setEditable(true);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        LocalDate localDate = LocalDate.parse(p.getPlayerBirth(), formatter);
+        tfBirthdate.setValue(localDate);
+        tfNacionality.setText(p.getNacionality());
+        tfHeigt.setText(p.getHeigth() + "");
+        tfWhigt.setText(p.getWeight() + "");
+        tfContact.setText(p.getContact());
+        tfPrice.setText(p.getPrice() + "");
+        tfSurname.setText(p.getPlayerSurname());
+        tfAgent.setText(p.getAgent());
+        tfContactAgent.setText(p.getContactAgent());
+        tfFamily.setText(p.getContactFamily());
+        ArrayList<TeamDTO> teams = Repository.GetPlayerTeams(p.getPlayerID());
+        for(TeamDTO t : teams){
+            TeamTV teamTV = new TeamTV();
+
+            teamTV.setId(t.getTeamID());
+            teamTV.setName(t.getTeamName());
+            Image image = new Image(t.getPicture());
+            ImageView logo = new ImageView(image);
+            logo.setFitHeight(40);
+            logo.setFitWidth(35);
+            teamTV.setImg(logo);
+            teamsTV.add(teamTV);
+        }
+        ArrayList<PositionDTO> positions = Repository.GetPlayerPositions(p.getPlayerID());
+        for(PositionDTO pos : positions){
+            PositionTV posTV = new PositionTV();
+            posTV.setId(pos.getPosID());
+            posTV.setLeters(pos.getLeters());
+            posTV.setName(pos.getPosName());
+            positionsTV.add(posTV);
+        }
+        tvTeams.setItems(teamsTV);
+        tablePos.setItems(positionsTV);
+        btnAction.setText("Modificar");
+    }
+    
+    
 
     @FXML
     private void OnAddClickListenner(ActionEvent event) throws IOException {

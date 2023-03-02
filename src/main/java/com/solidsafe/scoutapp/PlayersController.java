@@ -231,4 +231,18 @@ public class PlayersController implements Initializable {
         stage.initOwner(((Node)event.getSource()).getScene().getWindow());
         stage.show();
     }
+
+    @FXML
+    private void OnBtnEditClickListenner(ActionEvent event) throws IOException, ParseException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("player.fxml"));
+        Stage stage = new Stage();
+        Parent root = loader.load();
+        PlayerController pc = loader.getController();
+        pc.displayPlayer(Repository.GetPlayer(getTableSelection().getPlayerID()));
+        stage.setScene(new Scene(root));
+        stage.setTitle("Informacion del Jugador");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        stage.show();   
+    }
 }

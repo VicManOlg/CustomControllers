@@ -32,7 +32,7 @@ import org.json.simple.parser.ParseException;
  */
 public class Repository {
     
-    private static String apiUrl = "https://iotscouting.com/api/";
+    private static String apiUrl = "http://localhost:44364/api/";
     public static ScoutDTO  login(String name, String pass) {
         ScoutDTO scout = new ScoutDTO();
         try {
