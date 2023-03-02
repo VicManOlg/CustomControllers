@@ -809,8 +809,8 @@ public class Repository {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("DELETE");
-            conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
-            conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
+            conn.setRequestProperty("Content-Type", "application/json; charset=utf-8;");
+            conn.setRequestProperty("Accept", "application/json;charset=utf-8;");
             conn.connect();
             int responseCode = conn.getResponseCode();
             if (responseCode != 200) {

@@ -197,7 +197,7 @@ public class PlayerDTO {
 
     @Override
     public String toString() {
-        return "PlayerDTO{" + "playerID=" + playerID + ", playerName=" + playerName + ", playerSurname=" + playerSurname + ", playerBirth=" + playerBirth + ", nacionality=" + nacionality + ", heigth=" + heigth + ", weight=" + weight + ", price=" + price + ", contract=" + contract + ", contact=" + contact + ", agent=" + agent + ", contactAgent=" + contactAgent + ", contactFamily=" + contactFamily + ", photo=" + photo + '}';
+        return playerName + " " + playerSurname;
     }
 
     

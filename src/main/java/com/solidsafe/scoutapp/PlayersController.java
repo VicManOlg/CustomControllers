@@ -64,6 +64,8 @@ public class PlayersController implements Initializable {
     private MFXButton btnEdit;
     @FXML
     private MFXButton btnDelete;
+    @FXML
+    private MFXButton btnReview;
 
     
     
@@ -120,6 +122,7 @@ public class PlayersController implements Initializable {
                 btnView.setDisable(false);
                 btnEdit.setDisable(false);
                 btnDelete.setDisable(false);
+                btnReview.setDisable(false);
                 
             });
 	}
@@ -212,5 +215,20 @@ public class PlayersController implements Initializable {
         //stage.setMaximized(false);   
         stage.show();
         //stage.setMaximized(true);
+    }
+
+    @FXML
+    private void OnBtnReviewClickListenner(ActionEvent event) throws IOException {
+        //setPlayer
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("newreview.fxml"));
+        Stage stage = new Stage();
+        Parent root = loader.load();
+        NewreviewController nr = loader.getController();
+        nr.setPlayer(getTableSelection(), scoutDTO);
+        stage.setScene(new Scene(root));
+        stage.setTitle("Informacion del Jugador");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.initOwner(((Node)event.getSource()).getScene().getWindow());
+        stage.show();
     }
 }

@@ -3,9 +3,6 @@ package com.solidsafe.scoutapp;
 import io.github.palexdev.materialfx.controls.MFXTableColumn;
 import io.github.palexdev.materialfx.controls.MFXTableView;
 import io.github.palexdev.materialfx.controls.cell.MFXTableRowCell;
-import io.github.palexdev.materialfx.filter.DoubleFilter;
-import io.github.palexdev.materialfx.filter.IntegerFilter;
-import io.github.palexdev.materialfx.filter.StringFilter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,7 +24,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.CategoryDTO;
 import model.ClubDTO;
-import model.PlayerDTO;
 import model.Repository;
 import model.ScoutDTO;
 

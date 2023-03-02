@@ -100,6 +100,7 @@ public class TeamController implements Initializable {
         ivUrl.setImage(image); 
         idTeam = tdto.getTeamID();
         idClub = club;
+        
     }
     
 
