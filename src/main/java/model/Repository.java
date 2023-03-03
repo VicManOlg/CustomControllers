@@ -31,7 +31,9 @@ import org.json.simple.parser.ParseException;
  * @author Victor
  */
 public class Repository {
-    
+    /*
+    * Get request 
+    */
     private static String apiUrl = "http://localhost:44364/api/";
     public static ScoutDTO  login(String name, String pass) {
         ScoutDTO scout = new ScoutDTO();
@@ -110,7 +112,6 @@ public class Repository {
         }
         return teams;
     }
-    
     public static ArrayList<PlayerDTO> GetPlayersByTeam(int id) {  
         ArrayList<PlayerDTO> players = new ArrayList<PlayerDTO>();
         try {
@@ -232,83 +233,6 @@ public class Repository {
         }
         return cats;
     }
-    private final OkHttpClient httpClient = new OkHttpClient();
-    public boolean sendPOST(TeamDTO teamdto, int clubID) throws IOException {
-        // json formatted data
-        String json = new StringBuilder()
-                .append("{")
-                .append("\"TeamID\":"+0+",")
-                .append("\"TeamName\":\""+teamdto.getTeamName()+"\",")
-                .append("\"CategoryID\":\""+teamdto.getCatID()+"\",")
-                .append("\"ClubID\":\""+clubID+"\",")
-                .append("\"Picture\":\""+teamdto.getPicture()+"\",")
-                .append("}").toString();
-
-        // json request body
-        RequestBody body = RequestBody.create(
-                json,
-                MediaType.parse("application/json; charset=utf-8")
-        );
-
-        Request request = new Request.Builder()
-                .url(apiUrl + "post/team")
-                .addHeader("User-Agent", "OkHttp Bot")
-                .post(body)
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Get response body
-            System.out.println(response.body().string());
-            return true;
-        }
-    }
-    
-    public boolean addPlayer(PlayerDTO player, int clubID) throws IOException {
-        // json formatted data
-        String json = new StringBuilder()
-                .append("{")
-                .append("\"PlayerID\":"+0+",")
-                .append("\"PlayerName\":\""+player.getPlayerName()+"\",")
-                .append("\"PlayerSurname\":\""+player.getPlayerSurname()+"\",")
-                .append("\"BirthDate\":\""+player.getPlayerBirth()+"\",")
-                .append("\"ClubID\":\""+clubID+"\",")
-                .append("\"Nationality\":\""+player.getNacionality()+"\",")
-                .append("\"Height\":\""+player.getHeigth()+"\",")
-                .append("\"Price\":\""+player.getPrice()+"\",")
-                .append("\"PContract\":\""+player.getContract()+"\",")
-                .append("\"PWeight\":\""+player.getWeight()+"\",")
-                .append("\"Contact\":\""+player.getContact()+"\",")
-                .append("\"ContactAgent\":\""+player.getContactAgent()+"\",")
-                .append("\"Agent\":\""+player.getAgent()+"\",")
-                .append("\"ContactFamily\":\""+player.getContactFamily()+"\",")
-                .append("\"Photo\":\""+player.getPhoto()+"\",")
-                .append("}").toString();
-
-        // json request body
-        RequestBody body = RequestBody.create(
-                json,
-                MediaType.parse("application/json; charset=utf-8")
-        );
-
-        Request request = new Request.Builder()
-                .url(apiUrl + "post/player")
-                .addHeader("User-Agent", "OkHttp Bot")
-                .post(body)
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Get response body
-            System.out.println(response.body().string());
-            return true;
-        }
-    }
-    
     public static ClubDTO  GetClub(int id) {
         ClubDTO club = new ClubDTO();
         try {
@@ -342,7 +266,6 @@ public class Repository {
         }
         return club;
     }
-    
     public static  ArrayList<GameDTO>  GetGamesByTeam(int id) {
         ArrayList<GameDTO> games = new ArrayList<GameDTO>();
         try {
@@ -424,7 +347,6 @@ public class Repository {
         }
         return player;
     }
-    
     public static  ArrayList<TeamDTO>  GetPlayerTeams(int id) {
         ArrayList<TeamDTO> teams = new ArrayList<TeamDTO>();
         try {
@@ -461,8 +383,7 @@ public class Repository {
             return null;
         }
         return teams;
-    }
-    
+    } 
     public static  ArrayList<PositionDTO>  GetPlayerPositions(int id) {
         ArrayList<PositionDTO> positions = new ArrayList<PositionDTO>();
         try {
@@ -612,94 +533,6 @@ public class Repository {
         }
         return players;
     }
-    public boolean addTeamSquad(PlayerDTO player, int teamId) throws IOException {
-        // json formatted data
-        String json = new StringBuilder()
-                .append("{")
-                .append("\"PlayerID\":"+player.getPlayerID()+",")
-                .append("\"TeamID\":\""+teamId+"\",")
-                .append("\"DateStart\":\""+player.getPlayerSurname()+"\",")
-                .append("}").toString();
-
-        // json request body
-        RequestBody body = RequestBody.create(
-                json,
-                MediaType.parse("application/json; charset=utf-8")
-        );
-
-        Request request = new Request.Builder()
-                .url(apiUrl + "post/squad")
-                .addHeader("User-Agent", "OkHttp Bot")
-                .post(body)
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Get response body
-            System.out.println(response.body().string());
-            return true;
-        }
-    }
-    public boolean updateTeam(TeamDTO teamdto, int clubID) throws IOException {
-        // json formatted data
-        String json = new StringBuilder()
-                .append("{")
-                .append("\"TeamID\":"+teamdto.getTeamID()+",")
-                .append("\"TeamName\":\""+teamdto.getTeamName()+"\",")
-                .append("\"CategoryID\":\""+teamdto.getCatID()+"\",")
-                .append("\"ClubID\":\""+clubID+"\",")
-                .append("\"Picture\":\""+teamdto.getPicture()+"\",")
-                .append("}").toString();
-
-        // json request body
-        RequestBody body = RequestBody.create(
-                json,
-                MediaType.parse("application/json; charset=utf-8")
-        );
-
-        Request request = new Request.Builder()
-                .url(apiUrl + "put/team")
-                .addHeader("User-Agent", "OkHttp Bot")
-                .put(body)
-                .build();
-
-        try (Response response = httpClient.newCall(request).execute()) {
-
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-
-            // Get response body
-            System.out.println(response.body().string());
-            return true;
-        }
-    }
-    public static boolean RemovePlayerFromTeam(int idTeam, int idPlayer) {  
-        try {
-            URL url = new URL(apiUrl + "delete/teamsquad/" + idTeam + "/" + idPlayer);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setDoOutput(true);
-            conn.setRequestMethod("DELETE");
-            conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
-            conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
-            conn.connect();
-            int responseCode = conn.getResponseCode();
-            if (responseCode != 200) {
-                throw new RuntimeException("HttpResponseCode: " + responseCode);
-            } else {
-                StringBuilder informationString = new StringBuilder();
-                Scanner scanner = new Scanner(url.openStream(), "utf-8");
-                while (scanner.hasNext()) {
-                    informationString.append(scanner.nextLine());
-                }
-                scanner.close();            
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-            return true;
-        }
     public static ArrayList<PositionDTO> GetPositions(int idClub) {  
         ArrayList<PositionDTO> positions = new ArrayList<PositionDTO>();
         try {
@@ -736,6 +569,114 @@ public class Repository {
             return null;
         }
         return positions;
+    }
+    /*
+     * Post request (for add new) 
+     */
+    private final OkHttpClient httpClient = new OkHttpClient();
+    public boolean sendPOST(TeamDTO teamdto, int clubID) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"TeamID\":"+0+",")
+                .append("\"TeamName\":\""+teamdto.getTeamName()+"\",")
+                .append("\"CategoryID\":\""+teamdto.getCatID()+"\",")
+                .append("\"ClubID\":\""+clubID+"\",")
+                .append("\"Picture\":\""+teamdto.getPicture()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url(apiUrl + "post/team")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
+    public boolean addPlayer(PlayerDTO player, int clubID) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"PlayerID\":"+0+",")
+                .append("\"PlayerName\":\""+player.getPlayerName()+"\",")
+                .append("\"PlayerSurname\":\""+player.getPlayerSurname()+"\",")
+                .append("\"BirthDate\":\""+player.getPlayerBirth()+"\",")
+                .append("\"ClubID\":\""+clubID+"\",")
+                .append("\"Nationality\":\""+player.getNacionality()+"\",")
+                .append("\"Height\":\""+player.getHeigth()+"\",")
+                .append("\"Price\":\""+player.getPrice()+"\",")
+                .append("\"PContract\":\""+player.getContract()+"\",")
+                .append("\"PWeight\":\""+player.getWeight()+"\",")
+                .append("\"Contact\":\""+player.getContact()+"\",")
+                .append("\"ContactAgent\":\""+player.getContactAgent()+"\",")
+                .append("\"Agent\":\""+player.getAgent()+"\",")
+                .append("\"ContactFamily\":\""+player.getContactFamily()+"\",")
+                .append("\"Photo\":\""+player.getPhoto()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url(apiUrl + "post/player")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
+    public boolean addTeamSquad(PlayerDTO player, int teamId) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"PlayerID\":"+player.getPlayerID()+",")
+                .append("\"TeamID\":\""+teamId+"\",")
+                .append("\"DateStart\":\""+player.getPlayerSurname()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url(apiUrl + "post/squad")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
     }
     public boolean addPlayerPosition(int idPlayer, int idPos, int firstPos) throws IOException {
         // json formatted data
@@ -802,7 +743,110 @@ public class Repository {
             return true;
         }
     }
-    
+    public boolean addReview(ReviewDTO review) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"ReviewID\":"+0+",")
+                .append("\"PlayerName\":\""+review.getPlayer().getPlayerName()+"\",")
+                .append("\"Comments\":\""+review.getComments()+"\",")
+                .append("\"ReviewDate\":"+review.getDate()+"\",")
+                .append("\"ScoutID\":\""+review.getScout().getScoutID()+"\",")
+                .append("\"PlayerID\":"+review.getPlayer().getPlayerID()+"\",")
+                .append("\"PositionID\":\""+review.getPositionId()+"\",")
+                .append("\"ReviewLevel\":\""+review.getLevel()+"\",")
+                .append("\"Technical\":"+review.getTechnical()+",")
+                .append("\"Tactical\":\""+review.getTactical()+"\",")
+                .append("\"Phisic\":"+review.getPhisic()+"\",")
+                .append("\"Mental\":\""+review.getMental()+"\",")
+                .append("\"Intelligence\":"+review.getIntelligence()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url(apiUrl + "post/review")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
+    /*
+     * Post/put request (for update) 
+     */
+    public boolean updateTeam(TeamDTO teamdto, int clubID) throws IOException {
+        // json formatted data
+        String json = new StringBuilder()
+                .append("{")
+                .append("\"TeamID\":"+teamdto.getTeamID()+",")
+                .append("\"TeamName\":\""+teamdto.getTeamName()+"\",")
+                .append("\"CategoryID\":\""+teamdto.getCatID()+"\",")
+                .append("\"ClubID\":\""+clubID+"\",")
+                .append("\"Picture\":\""+teamdto.getPicture()+"\",")
+                .append("}").toString();
+
+        // json request body
+        RequestBody body = RequestBody.create(
+                json,
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        Request request = new Request.Builder()
+                .url(apiUrl + "put/team")
+                .addHeader("User-Agent", "OkHttp Bot")
+                .post(body)
+                .build();
+
+        try (Response response = httpClient.newCall(request).execute()) {
+
+            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+            // Get response body
+            System.out.println(response.body().string());
+            return true;
+        }
+    }
+    /*
+     * Get/Delete request (for delete) 
+     */
+    public static boolean RemovePlayerFromTeam(int idTeam, int idPlayer) {  
+        try {
+            URL url = new URL(apiUrl + "delete/teamsquad/" + idTeam + "/" + idPlayer);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("DELETE");
+            conn.setRequestProperty("Content-Type", "application/json; charset=ISO-8859-1;");
+            conn.setRequestProperty("Accept", "application/json;charset=ISO-8859-1;");
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
+            } else {
+                StringBuilder informationString = new StringBuilder();
+                Scanner scanner = new Scanner(url.openStream(), "utf-8");
+                while (scanner.hasNext()) {
+                    informationString.append(scanner.nextLine());
+                }
+                scanner.close();            
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+            return true;
+        }
     public static boolean deleteEmployee(int id) throws ClientProtocolException, IOException {
          try {
             URL url = new URL(apiUrl + "delete/team/" + id);

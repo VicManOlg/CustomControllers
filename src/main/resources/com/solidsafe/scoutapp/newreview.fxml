@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="528.0" prefWidth="654.0" style="-fx-background-color: rgba(34,32,32,0.9108018207282913) 79%;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.solidsafe.scoutapp.NewreviewController">
    <children>
-      <TextArea layoutX="37.0" layoutY="260.0" prefHeight="200.0" prefWidth="591.0" style="-fx-background-color: black;" />
+      <TextArea fx:id="tfComments" layoutX="37.0" layoutY="260.0" prefHeight="200.0" prefWidth="591.0" style="-fx-background-color: black;" />
       <Label layoutX="37.0" layoutY="228.0" prefHeight="22.0" prefWidth="98.0" text="Comentarios" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -67,19 +67,25 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <MFXTextField floatMode="ABOVE" GridPane.columnIndex="1" />
-            <MFXTextField floatMode="ABOVE" layoutX="128.0" layoutY="3.0" prefHeight="30.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <MFXTextField floatMode="ABOVE" layoutX="128.0" layoutY="38.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <MFXTextField floatMode="ABOVE" layoutX="128.0" layoutY="74.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <MFXTextField floatMode="ABOVE" layoutX="128.0" layoutY="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <MFXTextField fx:id="tfTecnic" floatMode="ABOVE" GridPane.columnIndex="1" />
+            <MFXTextField fx:id="tfTactical" floatMode="ABOVE" layoutX="128.0" layoutY="3.0" prefHeight="30.0" prefWidth="86.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <MFXTextField fx:id="tfMental" floatMode="ABOVE" layoutX="128.0" layoutY="38.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <MFXTextField fx:id="tfPhisic" floatMode="ABOVE" layoutX="128.0" layoutY="74.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <MFXTextField fx:id="tfIntelligence" floatMode="ABOVE" layoutX="128.0" layoutY="109.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <ComboBox fx:id="cbPlayer" layoutX="36.0" layoutY="117.0" prefHeight="26.0" prefWidth="182.0" />
+      <ComboBox fx:id="cbPlayer" layoutX="36.0" layoutY="117.0" onAction="#OnCbPlayerSelectedChanged" prefHeight="26.0" prefWidth="182.0" />
       <ComboBox fx:id="cbLevels" layoutX="36.0" layoutY="181.0" prefHeight="26.0" prefWidth="182.0" />
-      <Button layoutX="461.0" layoutY="476.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="167.0" text="Añadir">
+      <Button layoutX="461.0" layoutY="476.0" mnemonicParsing="false" onAction="#OnBtnAddClickListenner" prefHeight="26.0" prefWidth="167.0" text="Añadir">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
+      <ComboBox fx:id="cbPos" layoutX="36.0" layoutY="52.0" prefHeight="26.0" prefWidth="182.0" />
+      <Label layoutX="37.0" layoutY="16.0" prefHeight="22.0" prefWidth="66.0" text="Posicion" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
