@@ -105,8 +105,7 @@ public class StartController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         
-  
+          
     }
     public void loadMenu(){
         List<CategoryDTO> cats = Repository.GetCategories(clubDTO.getClubId());
@@ -430,6 +429,7 @@ public class StartController implements Initializable {
         stage.setHeight(779);
         stage.show();
         //stage.setMaximized(true);
+        
     }
 
     @FXML

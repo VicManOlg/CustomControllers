@@ -570,6 +570,43 @@ public class Repository {
         }
         return positions;
     }
+    public static  ArrayList<GameDTO>  GetGames(int id) {
+        ArrayList<GameDTO> games = new ArrayList<GameDTO>();
+        try {
+            URL url = new URL(apiUrl + "games/" + id);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-Type", "application/json; utf-8");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.connect();
+            int responseCode = conn.getResponseCode();
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
+            } else {
+                StringBuilder informationString = new StringBuilder();
+                Scanner scanner = new Scanner(url.openStream(), "utf-8");
+                while (scanner.hasNext()) {
+                    informationString.append(scanner.nextLine());
+                }
+                scanner.close();
+                JSONParser parse = new JSONParser();
+                JSONArray dataObject = (JSONArray) parse.parse(String.valueOf(informationString));
+                for(int i = 0; i < dataObject.size(); i++ ){
+                    GameDTO game = new GameDTO();
+                    JSONObject countryData = (JSONObject) dataObject.get(i);
+                    game.setGameId(Integer.parseInt(countryData.get("Id").toString()));
+                    game.setGameDate(countryData.get("date").toString());
+                    game.setVisitor(new TeamDTO());
+                    System.out.println(game);
+                    games.add(game);
+                }   
+            }
+        } catch (IOException | RuntimeException | ParseException e) {
+            return null;
+        }
+        return games;
+    }
     /*
      * Post request (for add new) 
      */
