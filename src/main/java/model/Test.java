@@ -11,7 +11,7 @@ public class Test {
     public static void main(String[] args) throws IOException {
    
         //r.addPlayer(player, 1);
-        Repository.GetPositions(0);
+        Repository.GetGames(1);
         /*
         Repository.GetPlayersByTeam(1);
         TeamDTO tdto = new TeamDTO();

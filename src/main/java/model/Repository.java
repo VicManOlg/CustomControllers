@@ -34,7 +34,7 @@ public class Repository {
     /*
     * Get request 
     */
-    private static String apiUrl = "http://localhost:44364/api/";
+    private static String apiUrl = "https://iotscouting.com/api/";
     public static ScoutDTO  login(String name, String pass) {
         ScoutDTO scout = new ScoutDTO();
         try {
@@ -597,7 +597,9 @@ public class Repository {
                     JSONObject countryData = (JSONObject) dataObject.get(i);
                     game.setGameId(Integer.parseInt(countryData.get("Id").toString()));
                     game.setGameDate(countryData.get("date").toString());
-                    game.setVisitor(new TeamDTO());
+                    TeamDTO tdto = new TeamDTO();
+                    tdto.setTeamID(Integer.parseInt(countryData.get("visitor.TeamId").toString()));
+                    game.setVisitor(tdto);
                     System.out.println(game);
                     games.add(game);
                 }   
