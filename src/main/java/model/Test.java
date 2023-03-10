@@ -12,7 +12,7 @@ public class Test {
    
         //r.addPlayer(player, 1);
         Repository.GetGames(1);
-        /*
+        
         Repository.GetPlayersByTeam(1);
         TeamDTO tdto = new TeamDTO();
         tdto.setCatID(1);
@@ -21,7 +21,7 @@ public class Test {
         tdto.setTeamID(0);
         Repository r = new Repository();
         r.sendPOST(tdto, 1);
-        */
+        
     }
 }
 
