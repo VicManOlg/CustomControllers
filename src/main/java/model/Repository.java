@@ -34,7 +34,7 @@ public class Repository {
     /*
     * Get request 
     */
-    private static String apiUrl = "https://iotscouting.com/api/";
+    private static String apiUrl = "http://localhost:44364/api/";
     public static ScoutDTO  login(String name, String pass) {
         ScoutDTO scout = new ScoutDTO();
         try {
@@ -782,7 +782,7 @@ public class Repository {
             return true;
         }
     }
-    public boolean addReview(ReviewDTO review) throws IOException {
+    public boolean addReview(ReviewDTO review) {
         // json formatted data
         String json = new StringBuilder()
                 .append("{")
@@ -790,9 +790,9 @@ public class Repository {
                 .append("\"PlayerName\":\""+review.getPlayer().getPlayerName()+"\",")
                 .append("\"Comments\":\""+review.getComments()+"\",")
                 .append("\"ReviewDate\":"+review.getDate()+"\",")
-                .append("\"ScoutID\":\""+review.getScout().getScoutID()+"\",")
-                .append("\"PlayerID\":"+review.getPlayer().getPlayerID()+"\",")
-                .append("\"PositionID\":\""+review.getPositionId()+"\",")
+                .append("\"ScoutID\":"+review.getScout().getScoutID()+",")
+                .append("\"PlayerID\":"+review.getPlayer().getPlayerID()+",")
+                .append("\"PositionID\":"+review.getPositionId()+",")
                 .append("\"ReviewLevel\":\""+review.getLevel()+"\",")
                 .append("\"Technical\":"+review.getTechnical()+",")
                 .append("\"Tactical\":\""+review.getTactical()+"\",")
@@ -820,7 +820,10 @@ public class Repository {
             // Get response body
             System.out.println(response.body().string());
             return true;
+        } catch (IOException ex) {
+            System.out.println(ex);
         }
+        return false;
     }
     /*
      * Post/put request (for update) 

@@ -12,6 +12,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,27 +47,27 @@ import model.TeamDTO;
 public class PlayerController implements Initializable {
 
     @FXML
-    private MFXTextField tfId;
+    private TextField tfId;
     @FXML
-    private MFXTextField tfName;
+    private TextField tfName;
     @FXML
-    private DatePicker tfBirthdate;
+    private TextField tfBirthdate;
     @FXML
-    private MFXTextField tfNacionality;
+    private TextField tfNacionality;
     @FXML
-    private MFXTextField tfHeigt;
+    private TextField tfHeigt;
     @FXML
-    private MFXTextField tfContact;
+    private TextField tfContact;
     @FXML
-    private MFXTextField tfWhigt;
+    private TextField tfWhigt;
     @FXML
-    private MFXTextField tfPrice;
+    private TextField tfPrice;
     @FXML
-    private MFXTextField tfAgent;
+    private TextField tfAgent;
     @FXML
-    private MFXTextField tfContactAgent;
+    private TextField tfContactAgent;
     @FXML
-    private MFXTextField tfFamily;
+    private TextField tfFamily;
     @FXML
     private TableView<TeamTV> tvTeams;
     @FXML
@@ -85,7 +88,7 @@ public class PlayerController implements Initializable {
     private Button btnAction;
     private ClubDTO club;
     @FXML
-    private MFXTextField tfSurname;
+    private TextField tfSurname;
     private PlayerDTO player;
     @FXML
     private ImageView ivPhoto;
@@ -106,19 +109,56 @@ public class PlayerController implements Initializable {
      */
     public void addPlayer(ClubDTO club){
         this.club = club;
-        
+        tfPrice.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*(\\.\\d*)?")) {
+                    tfPrice.setText(oldValue);
+                }
+            }
+        });
+        tfHeigt.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*(\\.\\d*)?")) {
+                    tfHeigt.setText(oldValue);
+                }
+            }
+        });tfWhigt.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*(\\.\\d*)?")) {
+                    tfWhigt.setText(oldValue);
+                }
+            }
+        });
         //Allow edit every txtfild
-        tfName.setAllowEdit(true);
-        tfId.setAllowEdit(true);    
+        tfName.setEditable(true);
+        tfId.setEditable(false);
+        tfId.setText("0");
+        tfAgent.setText("No");
+        tfContactAgent.setText("No");
+        tfFamily.setText("No");
+        tfContact.setText("No");
+        
+        tfHeigt.setText("0");
+        tfWhigt.setText("0");
+        tfPrice.setText("0");
+        
+        tfId.setVisible(false);
         tfBirthdate.setEditable(true);
-        tfNacionality.setAllowEdit(true);
-        tfHeigt.setAllowEdit(true);
-        tfWhigt.setAllowEdit(true);
-        tfContact.setAllowEdit(true);
-        tfPrice.setAllowEdit(true);
-        tfAgent.setAllowEdit(true);
-        tfContactAgent.setAllowEdit(true);
-        tfFamily.setAllowEdit(true);
+        tfNacionality.setEditable(true);
+        tfHeigt.setEditable(true);
+        tfWhigt.setEditable(true);
+        tfContact.setEditable(true);
+        tfPrice.setEditable(true);
+        
+        tfAgent.setEditable(true);
+        tfContactAgent.setEditable(true);
+        tfFamily.setEditable(true);
         tvTeams.setDisable(true);
         tvTeams.setVisible(false);
         tablePos.setDisable(true);
@@ -139,23 +179,23 @@ public class PlayerController implements Initializable {
         teamsTV = FXCollections.observableArrayList();
         positionsTV = FXCollections.observableArrayList();
         tfId.setText(p.getPlayerID()+"");
-        tfName.setAllowEdit(false);
-        tfSurname.setAllowEdit(false);
-        tfId.setAllowEdit(false);
+        tfName.setEditable(false);
+        tfSurname.setEditable(false);
+        tfId.setEditable(false);
         tfBirthdate.setEditable(true);
-        tfNacionality.setAllowEdit(false);
-        tfHeigt.setAllowEdit(false);
-        tfWhigt.setAllowEdit(false);
-        tfContact.setAllowEdit(false);
-        tfPrice.setAllowEdit(false);
-        tfAgent.setAllowEdit(false);
-        tfContactAgent.setAllowEdit(false);
-        tfFamily.setAllowEdit(false);
+        tfNacionality.setEditable(false);
+        tfHeigt.setEditable(false);
+        tfWhigt.setEditable(false);
+        tfContact.setEditable(false);
+        tfPrice.setEditable(false);
+        tfAgent.setEditable(false);
+        tfContactAgent.setEditable(false);
+        tfFamily.setEditable(false);
         tfName.setText(p.getPlayerName());
         tfBirthdate.setEditable(true);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         LocalDate localDate = LocalDate.parse(p.getPlayerBirth(), formatter);
-        tfBirthdate.setValue(localDate);
+        tfBirthdate.setText(localDate.toString());
         tfNacionality.setText(p.getNacionality());
         tfHeigt.setText(p.getHeigth() + "");
         tfWhigt.setText(p.getWeight() + "");
@@ -202,23 +242,23 @@ public class PlayerController implements Initializable {
         teamsTV = FXCollections.observableArrayList();
         positionsTV = FXCollections.observableArrayList();
         tfId.setText(p.getPlayerID()+"");
-        tfName.setAllowEdit(false);
-        tfSurname.setAllowEdit(false);
-        tfId.setAllowEdit(false);
+        tfName.setEditable(false);
+        tfSurname.setEditable(false);
+        tfId.setEditable(false);
         tfBirthdate.setEditable(true);
-        tfNacionality.setAllowEdit(false);
-        tfHeigt.setAllowEdit(false);
-        tfWhigt.setAllowEdit(false);
-        tfContact.setAllowEdit(false);
-        tfPrice.setAllowEdit(false);
-        tfAgent.setAllowEdit(false);
-        tfContactAgent.setAllowEdit(false);
-        tfFamily.setAllowEdit(false);
+        tfNacionality.setEditable(false);
+        tfHeigt.setEditable(false);
+        tfWhigt.setEditable(false);
+        tfContact.setEditable(false);
+        tfPrice.setEditable(false);
+        tfAgent.setEditable(false);
+        tfContactAgent.setEditable(false);
+        tfFamily.setEditable(false);
         tfName.setText(p.getPlayerName());
         tfBirthdate.setEditable(true);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
         LocalDate localDate = LocalDate.parse(p.getPlayerBirth(), formatter);
-        tfBirthdate.setValue(localDate);
+        tfBirthdate.setText(localDate.toString());
         tfNacionality.setText(p.getNacionality());
         tfHeigt.setText(p.getHeigth() + "");
         tfWhigt.setText(p.getWeight() + "");
@@ -258,18 +298,27 @@ public class PlayerController implements Initializable {
 
     @FXML
     private void OnAddClickListenner(ActionEvent event) throws IOException {
+       String photo = lbUrl.getText();
         Repository repo = new Repository();
-        if(btnAction.getText().equalsIgnoreCase("Añadir")){
-            PlayerDTO player = new PlayerDTO(0, tfNacionality.getText(), Double.parseDouble(tfHeigt.getText()), Double.parseDouble(tfWhigt.getText()), Double.parseDouble(tfPrice.getText()), tfContact.getText(), tfAgent.getText(), tfContactAgent.getText(), tfFamily.getText(), lbUrl.getText());
-            player.setContract(" ");
-            player.setPlayerName(tfName.getText());
-            player.setPlayerSurname(tfSurname.getText());
-            player.setPlayerBirth(tfBirthdate.getValue().toString());
-            if(repo.addPlayer(player, club.getClubId())){
-                Node source = (Node) event.getSource();
-                Stage stage = (Stage) source.getScene().getWindow();
-                stage.close();
-            }
+        if(tfName.getText().equals("") || tfSurname.getText().equals("") ){
+            Messages.displayError("Error", "Error nombre, apellido o edad son campos obligatorios");
+        }
+        else{
+            if(btnAction.getText().equalsIgnoreCase("Añadir")){
+                if(photo.equals("")){
+                    photo = "https://s3.ppllstatics.com/laverdad/www/pre2017/multimedia/RC/201501/12/media/cortadas/avatar--320x378.jpg";
+                }
+                PlayerDTO player = new PlayerDTO(0, tfNacionality.getText(), Double.parseDouble(tfHeigt.getText()), Double.parseDouble(tfWhigt.getText()), Double.parseDouble(tfPrice.getText()), tfContact.getText(), tfAgent.getText(), tfContactAgent.getText(), tfFamily.getText(), photo);
+                player.setContract(" ");
+                player.setPlayerName(tfName.getText());
+                player.setPlayerSurname(tfSurname.getText());
+                player.setPlayerBirth(tfBirthdate.getText());
+                if(repo.addPlayer(player, club.getClubId())){
+                    Node source = (Node) event.getSource();
+                    Stage stage = (Stage) source.getScene().getWindow();
+                    stage.close();
+                }
+            } 
         }
     }
 

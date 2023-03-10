@@ -2,10 +2,10 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -68,14 +68,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="tfId" editable="false" floatMode="ABOVE" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <MFXTextField fx:id="tfName" floatMode="ABOVE" layoutX="193.0" layoutY="19.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <MFXTextField fx:id="tfSurname" floatMode="ABOVE" layoutX="193.0" layoutY="107.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker fx:id="tfBirthdate" prefHeight="26.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <MFXTextField fx:id="tfNacionality" floatMode="ABOVE" layoutX="193.0" layoutY="61.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <MFXTextField fx:id="tfHeigt" floatMode="ABOVE" layoutX="193.0" layoutY="151.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <MFXTextField fx:id="tfWhigt" floatMode="ABOVE" layoutX="193.0" layoutY="264.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <MFXTextField fx:id="tfPrice" floatMode="ABOVE" layoutX="193.0" layoutY="224.0" prefHeight="30.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <Label layoutX="10.0" layoutY="64.0" text="Apellidos:" textFill="WHITE" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
@@ -86,6 +78,14 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+            <TextField fx:id="tfId" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfName" layoutX="202.0" layoutY="53.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tfSurname" layoutX="202.0" layoutY="92.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfBirthdate" layoutX="202.0" layoutY="128.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="tfNacionality" layoutX="202.0" layoutY="164.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="tfHeigt" layoutX="202.0" layoutY="203.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <TextField fx:id="tfWhigt" layoutX="202.0" layoutY="241.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="tfPrice" layoutX="202.0" layoutY="280.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          </children>
       </GridPane>
       <TableView fx:id="tablePos" layoutX="787.0" layoutY="71.0" prefHeight="214.0" prefWidth="274.0">
@@ -146,30 +146,30 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="tfContact" floatMode="ABOVE" prefHeight="29.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Agente:" textFill="WHITE" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="tfAgent" floatMode="ABOVE" prefHeight="11.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Contacto Agente:" textFill="WHITE" GridPane.rowIndex="3">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="tfContactAgent" floatMode="ABOVE" prefHeight="11.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <Label text="Contacto Familia:" textFill="WHITE" GridPane.rowIndex="4">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <MFXTextField fx:id="tfFamily" floatMode="ABOVE" prefHeight="11.0" prefWidth="226.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label prefHeight="22.0" prefWidth="155.0" text="Datos de contacto" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+            <TextField fx:id="tfContact" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="tfAgent" layoutX="204.0" layoutY="52.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="tfContactAgent" layoutX="204.0" layoutY="88.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="tfFamily" layoutX="204.0" layoutY="124.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <ImageView fx:id="ivPhoto" fitHeight="182.0" fitWidth="169.0" layoutX="71.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true" />

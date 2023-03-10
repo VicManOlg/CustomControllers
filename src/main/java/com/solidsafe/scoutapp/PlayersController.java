@@ -103,7 +103,8 @@ public class PlayersController implements Initializable {
             columnPrice.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getPrice));
             columnHeigth.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getHeigth));
             columnWeight.setRowCellFactory(person -> new MFXTableRowCell<>(PlayerDTO::getWeight));
-
+            columnSurName.setMinWidth(200);
+            
             tbPlayers.getTableColumns().addAll(columnId, columnName, columnSurName, columnBirth, columnNacionality, columnPrice, columnHeigth, columnWeight);
             
             tbPlayers.getFilters().addAll(
@@ -212,6 +213,8 @@ public class PlayersController implements Initializable {
         Scene scene = new Scene(root);
         //stage.setMaximized(false);    
         stage.setScene(scene);
+        stage.setWidth(1300);
+        stage.setHeight(780);
         //stage.setMaximized(false);   
         stage.show();
         //stage.setMaximized(true);
@@ -245,4 +248,5 @@ public class PlayersController implements Initializable {
         stage.initOwner(((Node)event.getSource()).getScene().getWindow());
         stage.show();   
     }
+    
 }

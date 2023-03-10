@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
         <action>
-            <actionName>debug</actionName>
-            <goals>
-                <goal>clean</goal>
-                <goal>javafx:run@ide-debug</goal>
-            </goals>
-            <properties>
-                <jpda.listen>true</jpda.listen>
-            </properties>
-        </action>
-        <action>
             <actionName>profile</actionName>
             <goals>
                 <goal>clean</goal>
@@ -33,7 +23,6 @@
             </packagings>
             <goals>
                 <goal>clean</goal>
-                <!-- compile not needed with javafx-maven-plugin v0.0.5 -->
                 <goal>javafx:run</goal>
                 
             </goals>
@@ -45,4 +34,5 @@
                 <exec.executable>java</exec.executable>
             </properties>
         </action>
+        
     </actions>

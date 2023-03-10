@@ -524,6 +524,8 @@ public class StartController implements Initializable {
         Scene scene = new Scene(root);
         //stage.setMaximized(false);    
         stage.setScene(scene);
+        stage.setWidth(1300);
+        stage.setHeight(777);
         //stage.setMaximized(false);   
         stage.show();
         //stage.setMaximized(true);

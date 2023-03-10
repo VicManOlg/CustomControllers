@@ -32,6 +32,8 @@ public class PositionsController implements Initializable {
     @FXML
     private MFXCheckbox ckbFirstPos;
     private PlayerDTO player;
+    @FXML
+    private MFXCheckbox ckbFirstPos1;
     
     /**
      * Initializes the controller class.

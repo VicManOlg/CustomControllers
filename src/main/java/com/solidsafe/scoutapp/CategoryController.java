@@ -70,7 +70,7 @@ public class CategoryController implements Initializable {
             
             MFXTableColumn<CategoryDTO> columnId = new MFXTableColumn<>("ID", true, Comparator.comparing(CategoryDTO::getCatId));
             trowName = new MFXTableColumn<>("Nombre", true, Comparator.comparing(CategoryDTO::getCatName));
-            
+            trowName.setMinWidth(200);
             
             
             columnId.setRowCellFactory(person -> new MFXTableRowCell<>(CategoryDTO::getCatId));
@@ -108,14 +108,41 @@ public class CategoryController implements Initializable {
         CategoryDTO catDTO = new CategoryDTO(0,tfCategory.getText());
         Repository repo = new Repository();
         repo.addCategory(catDTO ,this.club.getClubId());
+        categoryList.add(catDTO);
     }
 
     @FXML
-    private void OnPlayerClickListenner(ActionEvent event) {
+    private void OnPlayerClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("players.fxml"));
+        Parent root = loader.load();
+        PlayersController playersController = loader.getController();
+        playersController.callPlayer(club, scout);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        //stage.setMaximized(false);   
+        stage.setWidth(1300);
+        stage.setHeight(779);
+        stage.show();
+        //stage.setMaximized(true);
     }
 
     @FXML
-    private void OnReviwClickListenner(ActionEvent event) {
+    private void OnReviwClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("review.fxml"));
+        Parent root = loader.load();
+        ReviewController reviewController = loader.getController();
+        reviewController.displayName(scout, club);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        //stage.setMaximized(false);   
+        stage.setWidth(1300);
+        stage.setHeight(779);
+        stage.show();
+        //stage.setMaximized(true);
     }
 
     @FXML
@@ -130,7 +157,7 @@ public class CategoryController implements Initializable {
         stage.setScene(scene);
         //stage.setMaximized(false);   
         stage.setWidth(1300);
-        stage.setHeight(781);
+        stage.setHeight(801);
         stage.show();
     }
     

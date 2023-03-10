@@ -14,7 +14,12 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
-      <MFXCheckbox fx:id="ckbFirstPos" layoutX="48.0" layoutY="104.0" prefHeight="20.0" prefWidth="117.0" text="Primera Posicion" textFill="WHITE">
+      <MFXCheckbox fx:id="ckbFirstPos" layoutX="48.0" layoutY="104.0" prefHeight="20.0" prefWidth="117.0" text="Posición Genetica" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </MFXCheckbox>
+      <MFXCheckbox fx:id="ckbFirstPos1" layoutX="48.0" layoutY="126.0" prefHeight="20.0" prefWidth="117.0" text="Segunda Posición" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

@@ -278,7 +278,20 @@ public class ReviewController implements Initializable {
     }
 
     @FXML
-    private void OnCategoryClickListenner(ActionEvent event) {
+    private void OnCategoryClickListenner(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("category.fxml"));
+        Parent root = loader.load();
+        CategoryController categoryController = loader.getController();
+        categoryController.loadCategory(clubDTO, scoutDTO);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        //stage.setMaximized(false);    
+        stage.setScene(scene);
+        stage.setWidth(1300);
+        stage.setHeight(781);
+        //stage.setMaximized(false);   
+        stage.show();
+        //stage.setMaximized(true);
     }
 
 

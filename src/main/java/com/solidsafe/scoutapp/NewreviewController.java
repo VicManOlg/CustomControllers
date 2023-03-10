@@ -1,6 +1,7 @@
 package com.solidsafe.scoutapp;
 
 import io.github.palexdev.materialfx.controls.MFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
@@ -92,11 +93,13 @@ public class NewreviewController implements Initializable {
     }
 
     @FXML
-    private void OnBtnAddClickListenner(ActionEvent event) {
+    private void OnBtnAddClickListenner(ActionEvent event)  {
         ReviewDTO review = new ReviewDTO(0, tfComments.getText(), java.time.LocalDate.now().toString(), 
                 scout, player, 1, cbLevels.getSelectionModel().getSelectedItem(), Integer.parseInt(tfTecnic.getText()), 
                 Integer.parseInt(tfTactical.getText()), Integer.parseInt(tfPhisic.getText()), Integer.parseInt(tfMental.getText()), Integer.parseInt(tfIntelligence.getText()));
-        
+        Repository r = new Repository();
+        r.addReview(review);
+       
     }
 
     @FXML
